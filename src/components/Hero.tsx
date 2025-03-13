@@ -1,11 +1,8 @@
 
 import { ArrowDown } from "lucide-react";
 import { scrollTo } from "@/utils/scrollTo";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 const Hero = () => {
-  const isMobile = useIsMobile();
-  
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Glow effect */}
@@ -47,15 +44,15 @@ const Hero = () => {
             </button>
           </div>
         </div>
+        
+        <button 
+          onClick={() => scrollTo("about")}
+          className="absolute left-1/2 -translate-x-1/2 bottom-10 mt-5 animate-bounce"
+          aria-label="Scroll down"
+        >
+          <ArrowDown className="text-blue-accent h-8 w-8" />
+        </button>
       </div>
-      
-      <button 
-        onClick={() => scrollTo("about")}
-        className={`absolute left-1/2 -translate-x-1/2 ${isMobile ? 'bottom-20' : 'bottom-10'} animate-bounce`}
-        aria-label="Scroll down"
-      >
-        <ArrowDown className="text-blue-accent h-8 w-8" />
-      </button>
     </section>
   );
 };
