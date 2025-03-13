@@ -49,13 +49,17 @@ const Hero = () => {
         </div>
       </div>
       
-      <button 
-        onClick={() => scrollTo("about")}
-        className={`absolute left-1/2 -translate-x-1/2 ${isMobile ? 'bottom-20' : 'bottom-10'} animate-bounce`}
-        aria-label="Scroll down"
-      >
-        <ArrowDown className="text-blue-accent h-8 w-8" />
-      </button>
+      <div className="max-w-7xl mx-auto px-8 sm:px-6 lg:px-[31px] w-full">
+        <div className="flex justify-end">
+          <button 
+            onClick={() => scrollTo("about")}
+            className="p-3 rounded-full bg-dark-bg border border-blue-accent/30 text-blue-accent hover:bg-blue-accent/10 transition-colors mb-8"
+            aria-label="Scroll down"
+          >
+            <ArrowDown size={20} />
+          </button>
+        </div>
+      </div>
     </section>
   );
 };
