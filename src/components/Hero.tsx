@@ -16,7 +16,7 @@ const Hero = () => {
       </div>
       
       <div className="section-container relative z-10 flex flex-col items-center justify-center text-center space-y-10">
-        <div className="space-y-6 max-w-4xl">
+        <div className="space-y-6 max-w-4xl -mt-5">
           <div className="reveal-on-scroll">
             <span className="bg-blue-accent/20 text-blue-accent rounded-full px-4 py-1 text-sm font-medium inline-block mb-4">
               Lead Product Manager
