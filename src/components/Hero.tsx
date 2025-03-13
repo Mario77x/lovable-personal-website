@@ -47,7 +47,7 @@ const Hero = () => {
         
         <button 
           onClick={() => scrollTo("about")}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
+          className="absolute left-1/2 -translate-x-1/2 bottom-10 mt-5 animate-bounce"
           aria-label="Scroll down"
         >
           <ArrowDown className="text-blue-accent h-8 w-8" />
