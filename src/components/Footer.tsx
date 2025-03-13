@@ -30,7 +30,7 @@ const Footer = () => {
             </button>
             
             <p className="text-gray-400 text-sm">
-              &copy; {currentYear} Mario Savi. All rights reserved.
+              &copy; {currentYear} Mario Savi. All rights reserved. Built with Lovable.
             </p>
           </div>
         </div>
