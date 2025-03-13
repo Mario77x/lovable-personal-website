@@ -1,5 +1,5 @@
 
-import { Check, User } from "lucide-react";
+import { Check } from "lucide-react";
 
 const About = () => {
   // Key points about Mario Savi
@@ -30,9 +30,11 @@ const About = () => {
             <div className="relative">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden glass-card p-1">
                 <div className="w-full h-full rounded-full overflow-hidden">
-                  <div className="w-full h-full bg-dark-surface flex items-center justify-center">
-                    <User className="w-24 h-24 text-blue-accent/40" />
-                  </div>
+                  <img 
+                    src="/lovable-uploads/6d790604-3e8a-4493-9c9a-77e8dfee9ff6.png" 
+                    alt="Mario Savi" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
               <div className="absolute -z-10 inset-0 blur-xl bg-blue-accent/20 rounded-full"></div>
