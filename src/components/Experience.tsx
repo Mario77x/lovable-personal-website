@@ -12,64 +12,107 @@ interface ExperienceItem {
 const Experience = () => {
   const experiences: ExperienceItem[] = [
     {
-      title: "Senior Director product management",
-      company: "onsemi",
-      location: "Paris Metropolitan Area",
-      period: "Oct 2023 - Present",
+      title: "Group Product Manager",
+      company: "Factor Eleven",
+      location: "Gießen, Hessen (DE) - Remote",
+      period: "September 2022 - Present",
       description: [
-        "Strategic and data-driven leadership of onsemi global industrial power, charging and energy product management team, with a $1B+ revenue",
-        "Definition of go-to-market approach to maximize penetration of our solution, and development of marketing strategy to articulate product-market fit and our value proposition with B2B customers",
-        "Deployment of a customer-centric product management, to ensure rigorous customer requirements elicitation, validation, and deployment"
+        "Leading product discovery, strategy, and roadmap to drive innovation in alignment with business goals.",
+        "Product lifecycle management through user, customer and market research.",
+        "Contributing to the opening of new markets in Europe and North America.",
+        "Driving success and revenue growth through innovation impacting platform adoption and customer retention.",
+        "Contributing to Department-wide initiatives as part of the Tech Department Leadership Team, working closely with CTO and VP of Engineering.",
+        "Driving process improvements helping F11 scale up in a sustainable manner.",
+        "Driving cross-functional coordination with C-level stakeholders and General Managers across the company."
       ]
     },
     {
-      title: "Lead Product Manager",
-      company: "Camelot - F. Hoffmann-La Roche",
-      location: "Basel, Switzerland",
-      period: "Jan 2023 - Sep 2023",
+      title: "Product Owner",
+      company: "VCSW",
+      location: "The Hague (NL) - Hybrid",
+      period: "February 2022 - August 2022",
       description: [
-        "Capture and articulate business needs and priorities; Define product vision and mission with key stakeholders; Maintain product roadmap; Elicit, prioritize and structure requirements collaboratively with stakeholders",
-        "Manage and maintain the product-market fit; Engage with partners, stakeholders, users and customers to understand needs and challenges"
+        "Leading product strategy, vision and roadmap.",
+        "Leading two cross-functional teams.",
+        "Helping adopt Agile methodologies and optimizing operational processes.",
+        "Leading Product lifecycle management through user, customer and market research.",
+        "Responsible for general backlog management.",
+        "Driving stakeholder alignment across different teams and departments."
       ]
     },
     {
-      title: "Senior Product Manager",
-      company: "F. Hoffmann-La Roche",
-      location: "Basel, Switzerland",
-      period: "Jun 2021 - Dec 2022",
+      title: "Product Owner",
+      company: "Spaces (sister company of Regus)",
+      location: "Amsterdam (NL) - Remote",
+      period: "January 2020 - December 2021",
       description: [
-        "Responsible for the discovery, definition and delivery of the Roche Pharma Compliance Digital Journey, orchestrating stakeholders from IT and business in a global context",
-        "Transformed the Roche Pharma Compliance IT portfolio with a Digital Road Map consisting of over 60 delivery items, totaling 5M+ budget"
+        "Leading product strategy, roadmap and vision.",
+        "Driving the development of improvements and new features, from ideation to release.",
+        "Responsible for the general backlog management.",
+        "Helping launch a new family of office products (the \"Virtual Office\", as a response to a drop in revenue due to the Covid-19 pandemics).",
+        "Leading CR optimisation and A/B testing efforts (Google Optimize and GTM).",
+        "Data analysis and user research (Google Analytics and Hotjar).",
+        "Coordinating content production and localisation.",
+        "Stakeholder management across several teams and departments."
       ]
     },
     {
-      title: "Digital Product Manager",
-      company: "Novartis",
-      location: "Basel, Switzerland",
-      period: "Jul 2019 - May 2021",
+      title: "Customer Experience Team Lead",
+      company: "DoubleDutch event mobile app by Cvent",
+      location: "Amsterdam (NL)",
+      period: "November 2018 - December 2019",
       description: [
-        "Drove strategy & vision for digital patient centric solutions for global clinical trials, ensuring they provide clear value to patients and are aligned with Novartis Medical, Clinical & Business priorities",
-        "Led cross-functional product team, ensuring all activities are consistent with the approved product strategy, timeline and budget"
+        "Provided strategic advice to large Enterprise accounts across Europe and Asia to optimize customer experience and increase satisfaction.",
+        "Collaborated closely with Account Managers in managing the customer base.",
+        "Managed a remote support team, ensuring timely and effective resolution of customer issues.",
+        "Collaborated with cross-functional teams to enhance product features and drive customer success."
       ]
     },
     {
-      title: "Product Manager",
-      company: "Novartis",
-      location: "Basel, Switzerland",
-      period: "Mar 2019 - Jun 2019",
+      title: "Customer Success Specialist / Scrum Master",
+      company: "Tapfiliate.com",
+      location: "Amsterdam (NL) - On-site",
+      period: "January 2018 - October 2018",
       description: [
-        "Led the technology evaluation and vendor selection for a wide ecosystem of solutions in the Patients space, following a Design Thinking process",
-        "Implemented agile approaches to improve the delivery speed, and effectively applied lean management by streamlining processes"
+        "Provided technical B2B support to integrate the SaaS affiliate platform with clients' e-commerce solutions and payment gateways.",
+        "Facilitated adoption of Agile methodologies to streamline product management.",
+        "Collaborated with a cross-functional team to ensure product optimization."
       ]
     },
     {
-      title: "Management Consultant",
-      company: "Accenture",
-      location: "Milan, Italy",
-      period: "Feb 2017 - Feb 2019",
+      title: "Junior Product Owner",
+      company: "Booking.com",
+      location: "Amsterdam (NL) - On-site",
+      period: "August 2015 - July 2017",
       description: [
-        "Managed two successful product implementations for an Italian Insurance Company; first as a Requirements Manager, and then as a Scrum Master",
-        "Executed a process improvement and technology transformation for a global Pharmaceutical Company, generating 30% time savings and decreased rejection rates by 50%"
+        "Contributed to the prototyping and launch of new products in desktop and mobile.",
+        "Contributed to the prototyping of new products and features.",
+        "Proposed incremental improvements and A/B tests through hypotheses-based user stories.",
+        "Provided data and analysis from various sources, including database querying and live usability research moderation.",
+        "Coordinated tasks with international teams to drive product enhancements and feature updates at Booking.com.",
+        "Coordinated the production and localisation of content."
+      ]
+    },
+    {
+      title: "Project Manager",
+      company: "Booking.com",
+      location: "Amsterdam (NL) - On-site",
+      period: "December 2013 - July 2015",
+      description: [
+        "Managed projects aimed to produce content for A/B tests and new products.",
+        "Collaborated closely with different Product teams in order to fulfill their content requirements.",
+        "Collaborated in several feature and product launches.",
+        "Managed individual project contributors located worldwide to ensure successful delivery."
+      ]
+    },
+    {
+      title: "Content Projects Editor",
+      company: "Booking.com",
+      location: "Amsterdam (NL) - On-site",
+      period: "June 2011 - December 2013",
+      description: [
+        "Worked closely with Product teams producing (copywriting), curating (text, photo, USG, meta-data) and managing all kinds of content for A/B tests and new products and features.",
+        "Collaborated in several feature and product launches."
       ]
     }
   ];
