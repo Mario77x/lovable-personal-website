@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { scrollTo } from "@/utils/scrollTo";
 import { cn } from "@/lib/utils";
@@ -12,7 +11,6 @@ const Navbar = () => {
     { name: "About", href: "#about" },
     { name: "Experience", href: "#experience" },
     { name: "Skills", href: "#skills" },
-    { name: "Testimonials", href: "#testimonials" },
     { name: "Contact", href: "#contact" }
   ];
 
