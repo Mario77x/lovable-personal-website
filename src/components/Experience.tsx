@@ -1,5 +1,5 @@
 
-import { Briefcase, Calendar } from "lucide-react";
+import { Briefcase, Calendar, Building } from "lucide-react";
 
 interface ExperienceItem {
   title: string;
@@ -12,15 +12,24 @@ interface ExperienceItem {
 const Experience = () => {
   const experiences: ExperienceItem[] = [
     {
+      title: "Senior Director product management",
+      company: "onsemi",
+      location: "Paris Metropolitan Area",
+      period: "Oct 2023 - Present",
+      description: [
+        "Strategic and data-driven leadership of onsemi global industrial power, charging and energy product management team, with a $1B+ revenue",
+        "Definition of go-to-market approach to maximize penetration of our solution, and development of marketing strategy to articulate product-market fit and our value proposition with B2B customers",
+        "Deployment of a customer-centric product management, to ensure rigorous customer requirements elicitation, validation, and deployment"
+      ]
+    },
+    {
       title: "Lead Product Manager",
       company: "Camelot - F. Hoffmann-La Roche",
       location: "Basel, Switzerland",
-      period: "Jan 2023 - Present",
+      period: "Jan 2023 - Sep 2023",
       description: [
-        "Lead the strategic product direction for digital health solutions",
-        "Drive product development through collaborating with cross-functional teams",
-        "Develop and maintain product roadmaps aligned with business objectives",
-        "Perform competitive analysis and identify market opportunities"
+        "Capture and articulate business needs and priorities; Define product vision and mission with key stakeholders; Maintain product roadmap; Elicit, prioritize and structure requirements collaboratively with stakeholders",
+        "Manage and maintain the product-market fit; Engage with partners, stakeholders, users and customers to understand needs and challenges"
       ]
     },
     {
@@ -29,22 +38,38 @@ const Experience = () => {
       location: "Basel, Switzerland",
       period: "Jun 2021 - Dec 2022",
       description: [
-        "Led teams in delivering digital healthcare products that enhanced patient outcomes",
-        "Conducted user research to identify customer needs and pain points",
-        "Collaborated with engineering teams to ensure timely and quality delivery",
-        "Implemented metrics to measure product performance and guide improvements"
+        "Responsible for the discovery, definition and delivery of the Roche Pharma Compliance Digital Journey, orchestrating stakeholders from IT and business in a global context",
+        "Transformed the Roche Pharma Compliance IT portfolio with a Digital Road Map consisting of over 60 delivery items, totaling 5M+ budget"
+      ]
+    },
+    {
+      title: "Digital Product Manager",
+      company: "Novartis",
+      location: "Basel, Switzerland",
+      period: "Jul 2019 - May 2021",
+      description: [
+        "Drove strategy & vision for digital patient centric solutions for global clinical trials, ensuring they provide clear value to patients and are aligned with Novartis Medical, Clinical & Business priorities",
+        "Led cross-functional product team, ensuring all activities are consistent with the approved product strategy, timeline and budget"
       ]
     },
     {
       title: "Product Manager",
       company: "Novartis",
       location: "Basel, Switzerland",
-      period: "Mar 2019 - May 2021",
+      period: "Mar 2019 - Jun 2019",
       description: [
-        "Managed product lifecycle from conception to launch for digital health initiatives",
-        "Defined product requirements and prioritized features based on business impact",
-        "Built strong relationships with stakeholders across the organization",
-        "Analyzed user feedback to drive continuous product improvement"
+        "Led the technology evaluation and vendor selection for a wide ecosystem of solutions in the Patients space, following a Design Thinking process",
+        "Implemented agile approaches to improve the delivery speed, and effectively applied lean management by streamlining processes"
+      ]
+    },
+    {
+      title: "Management Consultant",
+      company: "Accenture",
+      location: "Milan, Italy",
+      period: "Feb 2017 - Feb 2019",
+      description: [
+        "Managed two successful product implementations for an Italian Insurance Company; first as a Requirements Manager, and then as a Scrum Master",
+        "Executed a process improvement and technology transformation for a global Pharmaceutical Company, generating 30% time savings and decreased rejection rates by 50%"
       ]
     }
   ];
@@ -90,8 +115,11 @@ const Experience = () => {
                     </div>
                     
                     <div className="mb-4">
-                      <div className="text-lg text-blue-accent">{exp.company}</div>
-                      <div className="text-sm text-gray-400">{exp.location}</div>
+                      <div className="flex items-center text-lg text-blue-accent">
+                        <Building size={16} className="mr-2" />
+                        {exp.company}
+                      </div>
+                      <div className="text-sm text-gray-400 ml-6">{exp.location}</div>
                     </div>
                     
                     <ul className="space-y-2">
