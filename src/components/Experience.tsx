@@ -1,5 +1,4 @@
-
-import { Briefcase, Calendar, Building } from "lucide-react";
+import { Briefcase, Building } from "lucide-react";
 
 interface ExperienceItem {
   title: string;
@@ -158,11 +157,10 @@ const Experience = () => {
                         <Building size={16} className="mr-2" />
                         {exp.company}
                       </div>
-                      <div className="flex items-center text-blue-accent/80 text-sm mt-1">
-                        <Calendar size={14} className="mr-1" />
-                        <span>{exp.period}</span>
+                      <div className="flex ml-6">
+                        <div className="text-sm text-gray-400">{exp.location}</div>
+                        <div className="text-sm text-gray-400 ml-2">• {exp.period}</div>
                       </div>
-                      <div className="text-sm text-gray-400 ml-6">{exp.location}</div>
                     </div>
                     
                     <ul className="space-y-2">
