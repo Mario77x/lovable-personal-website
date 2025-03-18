@@ -1,3 +1,4 @@
+
 import { 
   LineChart, 
   Users, 
@@ -83,7 +84,7 @@ const Skills = () => {
         {
           name: "Growth Strategies",
           icon: <TrendingUp className="h-8 w-8 text-blue-accent" />,
-          description: "Implementing strategies to drive product adoption and growth"
+          description: "Implementing strategies tailored to the unique aspects of each product"
         },
         {
           name: "Technical Expertise",
