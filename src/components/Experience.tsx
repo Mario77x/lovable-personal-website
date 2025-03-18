@@ -162,7 +162,7 @@ const Experience = () => {
                         <Building size={16} className="mr-2" />
                         {exp.company}
                       </div>
-                      <div className="text-sm text-blue-accent/60 ml-6 italic">{exp.location}</div>
+                      <div className="text-sm text-gray-400 ml-6">{exp.location}</div>
                     </div>
                     
                     <ul className="space-y-2">
