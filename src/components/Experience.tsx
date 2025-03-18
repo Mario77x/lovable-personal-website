@@ -1,4 +1,3 @@
-
 import { Briefcase, Calendar, Building } from "lucide-react";
 
 interface ExperienceItem {
@@ -43,7 +42,7 @@ const Experience = () => {
     {
       title: "Product Owner",
       company: "Spaces (sister company of Regus)",
-      location: "Amsterdam (NL) - Remote",
+      location: "Amsterdam (NL) - Hybrid",
       period: "January 2020 - December 2021",
       description: [
         "Leading product strategy, roadmap and vision.",
@@ -59,7 +58,7 @@ const Experience = () => {
     {
       title: "Customer Experience Team Lead",
       company: "DoubleDutch event mobile app by Cvent",
-      location: "Amsterdam (NL)",
+      location: "Amsterdam (NL) - Hybrid",
       period: "November 2018 - December 2019",
       description: [
         "Provided strategic advice to large Enterprise accounts across Europe and Asia to optimize customer experience and increase satisfaction.",
@@ -71,7 +70,7 @@ const Experience = () => {
     {
       title: "Customer Success Specialist / Scrum Master",
       company: "Tapfiliate.com",
-      location: "Amsterdam (NL) - On-site",
+      location: "Amsterdam (NL) - Hybrid",
       period: "January 2018 - October 2018",
       description: [
         "Provided technical B2B support to integrate the SaaS affiliate platform with clients' e-commerce solutions and payment gateways.",
@@ -82,7 +81,7 @@ const Experience = () => {
     {
       title: "Junior Product Owner",
       company: "Booking.com",
-      location: "Amsterdam (NL) - On-site",
+      location: "Amsterdam (NL) - Hybrid",
       period: "August 2015 - July 2017",
       description: [
         "Contributed to the prototyping and launch of new products in desktop and mobile.",
@@ -96,7 +95,7 @@ const Experience = () => {
     {
       title: "Project Manager",
       company: "Booking.com",
-      location: "Amsterdam (NL) - On-site",
+      location: "Amsterdam (NL) - Hybrid",
       period: "December 2013 - July 2015",
       description: [
         "Managed projects aimed to produce content for A/B tests and new products.",
@@ -108,7 +107,7 @@ const Experience = () => {
     {
       title: "Content Projects Editor",
       company: "Booking.com",
-      location: "Amsterdam (NL) - On-site",
+      location: "Amsterdam (NL) - Hybrid",
       period: "June 2011 - December 2013",
       description: [
         "Worked closely with Product teams producing (copywriting), curating (text, photo, USG, meta-data) and managing all kinds of content for A/B tests and new products and features.",
