@@ -1,4 +1,3 @@
-
 import { 
   LineChart, 
   Users, 
@@ -67,9 +66,9 @@ const Skills = () => {
           description: "Implementing and optimizing agile product development"
         },
         {
-          name: "Executive Communication",
+          name: "People Management",
           icon: <Presentation className="h-8 w-8 text-blue-accent" />,
-          description: "Effectively communicating with executive stakeholders"
+          description: "Helping other product managers grow and further their career paths"
         }
       ]
     },
@@ -79,7 +78,7 @@ const Skills = () => {
         {
           name: "Analytics & Metrics",
           icon: <BarChart4 className="h-8 w-8 text-blue-accent" />,
-          description: "Defining and tracking KPIs to measure product success"
+          description: "Defining and tracking KPIs to measure success and drive decisions"
         },
         {
           name: "Growth Strategies",
@@ -87,9 +86,9 @@ const Skills = () => {
           description: "Implementing strategies to drive product adoption and growth"
         },
         {
-          name: "Data Analysis",
+          name: "Technical Expertise",
           icon: <LineChart className="h-8 w-8 text-blue-accent" />,
-          description: "Analyzing data to extract insights and drive decisions"
+          description: "Leveraging technical knowledge to create sustainable product strategies"
         },
         {
           name: "User Research",
