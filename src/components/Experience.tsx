@@ -160,7 +160,7 @@ const Experience = () => {
                       </div>
                       <div className="flex ml-6">
                         <div className="text-sm text-gray-400">{exp.location}</div>
-                        <div className="text-sm text-gray-400">| {exp.period}</div>
+                        <div className="text-sm text-gray-400 ml-2">| {exp.period}</div>
                       </div>
                     </div>
                     
