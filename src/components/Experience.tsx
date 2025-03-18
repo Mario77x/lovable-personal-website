@@ -1,3 +1,4 @@
+
 import { Briefcase, Calendar, Building } from "lucide-react";
 
 interface ExperienceItem {
@@ -148,18 +149,18 @@ const Experience = () => {
                 {/* Content */}
                 <div className={`ml-12 md:ml-0 ${index % 2 === 0 ? 'md:mr-[50%] md:pr-12' : 'md:ml-[50%] md:pl-12'}`}>
                   <div className="glass-card p-6 rounded-lg hover:shadow-blue-glow transition-shadow duration-300">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                    <div className="mb-4">
                       <h3 className="text-xl font-bold">{exp.title}</h3>
-                      <div className="flex items-center text-blue-accent/80 text-sm mt-1 md:mt-0">
-                        <Calendar size={14} className="mr-1" />
-                        <span>{exp.period}</span>
-                      </div>
                     </div>
                     
                     <div className="mb-4">
                       <div className="flex items-center text-lg text-blue-accent">
                         <Building size={16} className="mr-2" />
                         {exp.company}
+                      </div>
+                      <div className="flex items-center text-blue-accent/80 text-sm mt-1">
+                        <Calendar size={14} className="mr-1" />
+                        <span>{exp.period}</span>
                       </div>
                       <div className="text-sm text-gray-400 ml-6">{exp.location}</div>
                     </div>
