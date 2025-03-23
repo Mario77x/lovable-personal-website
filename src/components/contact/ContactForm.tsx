@@ -30,6 +30,7 @@ const ContactForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -64,6 +65,7 @@ const ContactForm = () => {
     }
     
     setIsSubmitting(true);
+    setErrorMessage("");
 
     try {
       // Create a contactFormData object to pass to sendEmail
@@ -99,14 +101,19 @@ const ContactForm = () => {
           captcha: ""
         });
       } else {
+        setErrorMessage(result.message);
         throw new Error(result.message);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
       setSubmitStatus("error");
+      
+      const errorMsg = error instanceof Error ? error.message : "There was a problem sending your message. Please try again.";
+      setErrorMessage(errorMsg);
+      
       toast({
         title: "Error",
-        description: error instanceof Error ? error.message : "There was a problem sending your message. Please try again.",
+        description: errorMsg,
         variant: "destructive",
       });
     } finally {
@@ -124,7 +131,7 @@ const ContactForm = () => {
       <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
       
       <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-        <FormStatusMessage status={submitStatus} />
+        <FormStatusMessage status={submitStatus} customError={errorMessage} />
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormInput

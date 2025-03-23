@@ -3,9 +3,10 @@ import { CheckCircle, AlertCircle } from "lucide-react";
 
 interface FormStatusMessageProps {
   status: "success" | "error" | "idle";
+  customError?: string;
 }
 
-const FormStatusMessage = ({ status }: FormStatusMessageProps) => {
+const FormStatusMessage = ({ status, customError }: FormStatusMessageProps) => {
   if (status === "idle") return null;
 
   return (
@@ -20,7 +21,7 @@ const FormStatusMessage = ({ status }: FormStatusMessageProps) => {
       {status === "error" && (
         <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 flex items-center">
           <AlertCircle size={20} className="mr-2 flex-shrink-0" />
-          <span>There was an error sending your message. Please try again later.</span>
+          <span>{customError || "There was an error sending your message. Please try again later."}</span>
         </div>
       )}
     </>

@@ -41,13 +41,26 @@ export const sendEmail = async (
     
     console.log("Response status:", response.status);
     
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Server response:', errorText);
-      throw new Error(`Server error: ${response.status} - ${errorText}`);
+    // Log the raw response for debugging
+    const responseText = await response.text();
+    console.log('Raw response:', responseText);
+    
+    // Check if response can be parsed as JSON
+    let result;
+    try {
+      result = JSON.parse(responseText);
+    } catch (e) {
+      console.error('Failed to parse response as JSON:', e);
+      if (responseText.includes('<!DOCTYPE html>')) {
+        throw new Error('Received HTML response instead of JSON. The Edge Function may not be deployed correctly.');
+      }
+      throw new Error(`Invalid response format: ${responseText.substring(0, 100)}...`);
     }
     
-    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status} - ${JSON.stringify(result)}`);
+    }
+    
     console.log('Email successfully sent!', result);
     
     return { 
