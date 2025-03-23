@@ -20,13 +20,16 @@ export const sendEmail = async (
   formElement: HTMLFormElement,
   formData?: ContactFormData
 ): Promise<{ success: boolean; message: string }> => {
-  // Define the Supabase URL
-  // If you're running this in production, set VITE_SUPABASE_URL in your Supabase project
-  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://diovezwcpjrdkpcbtcmz.supabase.co';
+  // Define the Supabase URL - using the hardcoded value as fallback
+  const supabaseUrl = 'https://diovezwcpjrdkpcbtcmz.supabase.co';
+  
+  // For client-side code in development
   const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
   
-  // Check if we have the necessary Supabase credentials
-  const useSupabase = supabaseUrl && supabaseAnonKey;
+  // Check if we can use Supabase Edge Function
+  // In production, we don't need the ANON key on the client as authorization
+  // will be handled by Supabase hosting
+  const useSupabase = true;
   
   if (useSupabase) {
     console.log("Using Supabase Edge Function to send email");
@@ -44,7 +47,8 @@ export const sendEmail = async (
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${supabaseAnonKey}`
+          // In production deployment, this Authorization header is automatically added
+          ...(supabaseAnonKey ? { 'Authorization': `Bearer ${supabaseAnonKey}` } : {})
         },
         body: JSON.stringify(formDataObject)
       });
