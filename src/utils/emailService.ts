@@ -12,42 +12,56 @@ export type ContactFormData = {
 
 /**
  * Sends an email using EmailJS
- * This function can be used in two ways:
- * 1. Via Supabase Edge Function (recommended for production - more secure)
- * 2. Directly using EmailJS on the client (for development or if no Supabase is available)
+ * This function will use Supabase Edge Function to handle email sending securely
  */
 export const sendEmail = async (
   formElement: HTMLFormElement,
   formData?: ContactFormData
 ): Promise<{ success: boolean; message: string }> => {
-  // Due to CORS issues with Supabase Edge Functions, we'll use EmailJS directly
-  console.log("Using EmailJS directly to send email");
+  // Define the Supabase URL - this is your public Supabase project URL
+  const supabaseUrl = 'https://diovezwcpjrdkpcbtcmz.supabase.co';
+  
+  console.log("Using Supabase Edge Function to send email");
   
   try {
-    // Initialize EmailJS with public key
-    const EMAILJS_PUBLIC_KEY = 'M05M2sfExhJdXGZl6';
-    const EMAILJS_SERVICE_ID = 'service_v1xv3on';
-    const EMAILJS_TEMPLATE_ID = 'template_6hwmtnp';
+    // Extract form data to send to the edge function
+    const formDataToSend = new FormData(formElement);
+    const formDataObject: Record<string, string> = {};
     
-    emailjs.init(EMAILJS_PUBLIC_KEY);
+    formDataToSend.forEach((value, key) => {
+      formDataObject[key] = value.toString();
+    });
     
-    // Send email directly using EmailJS sendForm method with the form element
-    const result = await emailjs.sendForm(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      formElement
-    );
+    // Send data to Supabase Edge Function
+    // No Authorization header needed when calling from the browser to a public edge function
+    const response = await fetch(`${supabaseUrl}/functions/v1/send-email`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formDataObject)
+    });
     
-    console.log('Email successfully sent via EmailJS!', result.text);
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({ message: 'Error processing response' }));
+      throw new Error(errorData.message || `Failed to send email: ${response.status}`);
+    }
+    
+    const result = await response.json();
+    console.log('Email successfully sent via Supabase!', result);
     return { 
       success: true, 
       message: 'Your message has been sent successfully!' 
     };
   } catch (error) {
-    console.error('Error sending email via EmailJS:', error);
+    console.error('Error sending email via Supabase:', error);
+    
+    // If there's a CORS error or network issue, we could show a more specific message
+    const errorMessage = error instanceof Error ? error.message : 'There was a problem sending your message. Please try again.';
+    
     return { 
       success: false, 
-      message: error instanceof Error ? error.message : 'There was a problem sending your message. Please try again.' 
+      message: errorMessage
     };
   }
 };
