@@ -20,86 +20,34 @@ export const sendEmail = async (
   formElement: HTMLFormElement,
   formData?: ContactFormData
 ): Promise<{ success: boolean; message: string }> => {
-  // Define the Supabase URL - using the hardcoded value as fallback
-  const supabaseUrl = 'https://diovezwcpjrdkpcbtcmz.supabase.co';
+  // Due to CORS issues with Supabase Edge Functions, we'll use EmailJS directly
+  console.log("Using EmailJS directly to send email");
   
-  // For client-side code in development
-  const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-  
-  // Check if we can use Supabase Edge Function
-  // In production, we don't need the ANON key on the client as authorization
-  // will be handled by Supabase hosting
-  const useSupabase = true;
-  
-  if (useSupabase) {
-    console.log("Using Supabase Edge Function to send email");
-    // Extract form data to send to the edge function
-    const formDataToSend = new FormData(formElement);
-    const formDataObject: Record<string, string> = {};
+  try {
+    // Initialize EmailJS with public key
+    const EMAILJS_PUBLIC_KEY = 'M05M2sfExhJdXGZl6';
+    const EMAILJS_SERVICE_ID = 'service_v1xv3on';
+    const EMAILJS_TEMPLATE_ID = 'template_6hwmtnp';
     
-    formDataToSend.forEach((value, key) => {
-      formDataObject[key] = value.toString();
-    });
+    emailjs.init(EMAILJS_PUBLIC_KEY);
     
-    try {
-      // Send data to Supabase Edge Function
-      const response = await fetch(`${supabaseUrl}/functions/v1/send-email`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          // In production deployment, this Authorization header is automatically added
-          ...(supabaseAnonKey ? { 'Authorization': `Bearer ${supabaseAnonKey}` } : {})
-        },
-        body: JSON.stringify(formDataObject)
-      });
-      
-      if (!response.ok) {
-        const result = await response.json().catch(() => ({ message: 'Error processing response' }));
-        throw new Error(result.message || `Failed to send email via Supabase Edge Function: ${response.status}`);
-      }
-      
-      const result = await response.json();
-      console.log('Email successfully sent via Supabase!', result);
-      return { 
-        success: true, 
-        message: 'Your message has been sent successfully!' 
-      };
-    } catch (error) {
-      console.error('Error sending email via Supabase:', error);
-      return { 
-        success: false, 
-        message: error instanceof Error ? error.message : 'There was a problem sending your message. Please try again.' 
-      };
-    }
-  } else {
-    console.log("Falling back to client-side EmailJS implementation");
-    // Fallback to client-side EmailJS implementation for development
-    try {
-      // Initialize EmailJS with public key
-      const EMAILJS_PUBLIC_KEY = 'M05M2sfExhJdXGZl6';
-      const EMAILJS_SERVICE_ID = 'service_v1xv3on';
-      const EMAILJS_TEMPLATE_ID = 'template_6hwmtnp';
-      
-      emailjs.init(EMAILJS_PUBLIC_KEY);
-      
-      // Send email directly using EmailJS sendForm method with the form element
-      const result = await emailjs.sendForm(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        formElement
-      );
-      
-      console.log('Email successfully sent via client!', result.text);
-      return { 
-        success: true, 
-        message: 'Your message has been sent successfully!' 
-      };
-    } catch (error) {
-      console.error('Error sending email via client:', error);
-      return { 
-        success: false, 
-        message: 'There was a problem sending your message. Please try again.' 
-      };
-    }
+    // Send email directly using EmailJS sendForm method with the form element
+    const result = await emailjs.sendForm(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
+      formElement
+    );
+    
+    console.log('Email successfully sent via EmailJS!', result.text);
+    return { 
+      success: true, 
+      message: 'Your message has been sent successfully!' 
+    };
+  } catch (error) {
+    console.error('Error sending email via EmailJS:', error);
+    return { 
+      success: false, 
+      message: error instanceof Error ? error.message : 'There was a problem sending your message. Please try again.' 
+    };
   }
 };
