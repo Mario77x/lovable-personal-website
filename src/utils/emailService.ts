@@ -1,5 +1,4 @@
 
-// This utility provides a secure approach to send emails via Supabase Edge Functions
 import emailjs from '@emailjs/browser';
 
 // Type for form data
@@ -30,21 +29,35 @@ export const sendEmail = async (
       formDataObject[key] = value.toString();
     });
     
-    console.log("Sending email via Supabase Edge Function...");
+    console.log("Sending email via Supabase Edge Function with data:", formDataObject);
+    console.log("Sending to URL:", `${supabaseUrl}/functions/v1/send-email`);
     
-    // Send data to Supabase Edge Function with proper CORS handling
+    // Send data to Supabase Edge Function with detailed error handling
     const response = await fetch(`${supabaseUrl}/functions/v1/send-email`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(formDataObject),
-      // Don't set explicit mode to let browser handle it
+      // Don't set explicit mode to let browser handle CORS properly
     });
     
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({ message: 'Error processing response' }));
-      throw new Error(errorData.message || `Failed to send email: ${response.status}`);
+    console.log("Response status:", response.status);
+    
+    // Handle different response statuses with descriptive messages
+    if (response.status === 0) {
+      throw new Error("Network error: CORS issue or network failure. Please ensure your Supabase Edge Function has proper CORS configuration.");
+    } else if (response.status === 404) {
+      throw new Error("The Edge Function could not be found. Please ensure it's deployed correctly at Supabase.");
+    } else if (!response.ok) {
+      let errorText = "Unknown error";
+      try {
+        const errorData = await response.json();
+        errorText = errorData.message || `Status code: ${response.status}`;
+      } catch (e) {
+        errorText = `Failed to parse error response. Status code: ${response.status}`;
+      }
+      throw new Error(`Edge Function error: ${errorText}`);
     }
     
     const result = await response.json();
@@ -54,12 +67,13 @@ export const sendEmail = async (
       message: 'Your message has been sent successfully!' 
     };
   } catch (error) {
-    console.error('Error sending email via Supabase:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    console.error('Error sending email via Supabase:', errorMessage);
     
-    // Provide a clear error message without exposing any implementation details
+    // Return a detailed error message for debugging purposes
     return { 
       success: false, 
-      message: 'There was a problem sending your message. Please try again later or contact directly via the email address provided.' 
+      message: `There was a problem sending your message. Technical details: ${errorMessage}. Please try again later or contact directly via the email address provided.` 
     };
   }
 };
