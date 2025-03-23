@@ -20,6 +20,10 @@ export default defineConfig(({ mode }) => ({
             console.log('proxy error', err);
           });
           proxy.on('proxyReq', (proxyReq, req, _res) => {
+            // Add CORS headers to the proxy request
+            proxyReq.setHeader('Origin', 'https://diovezwcpjrdkpcbtcmz.supabase.co');
+            proxyReq.setHeader('Access-Control-Request-Method', 'POST');
+            proxyReq.setHeader('Access-Control-Request-Headers', 'content-type');
             console.log('Sending Request to the Target:', req.method, req.url);
           });
           proxy.on('proxyRes', (proxyRes, req, _res) => {
