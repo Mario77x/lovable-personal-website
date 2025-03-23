@@ -10,24 +10,44 @@ export type ContactFormData = {
 };
 
 /**
- * Sends an email using EmailJS directly
+ * Sends an email using Supabase Edge Function to keep credentials secure
+ * No sensitive information is exposed in the frontend code
  */
 export const sendEmail = async (
   formElement: HTMLFormElement,
   formData?: ContactFormData
 ): Promise<{ success: boolean; message: string }> => {
   try {
-    console.log("Sending email with EmailJS...");
+    // Extract form data to send to the edge function
+    const formDataToSend = new FormData(formElement);
+    const formDataObject: Record<string, string> = {};
     
-    // Use the EmailJS service directly with the form element
-    const result = await emailjs.sendForm(
-      'default_service', // This should be replaced with your EmailJS service ID
-      'default_template', // This should be replaced with your EmailJS template ID
-      formElement,
-      'your_emailjs_public_key' // This should be replaced with your EmailJS public key
-    );
+    formDataToSend.forEach((value, key) => {
+      formDataObject[key] = value.toString();
+    });
     
-    console.log('Email successfully sent via EmailJS!', result.text);
+    console.log("Preparing to send email via Supabase Edge Function");
+    
+    // Use the relative path to avoid CORS issues
+    const response = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formDataObject),
+      credentials: 'include' // Include cookies if needed for auth
+    });
+    
+    console.log("Response status:", response.status);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Server response:', errorText);
+      throw new Error(`Server error: ${response.status}`);
+    }
+    
+    const result = await response.json();
+    console.log('Email successfully sent!', result);
     
     return { 
       success: true, 
@@ -35,7 +55,7 @@ export const sendEmail = async (
     };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-    console.error('Error sending email via EmailJS:', errorMessage);
+    console.error('Error sending email:', errorMessage);
     
     return { 
       success: false, 
