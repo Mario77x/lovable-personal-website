@@ -27,6 +27,7 @@ export const sendEmail = async (
     });
     
     console.log("Preparing to send email via Supabase Edge Function");
+    console.log("Form data:", formDataObject);
     
     // Use the relative path to avoid CORS issues
     const response = await fetch('/api/send-email', {
@@ -43,7 +44,7 @@ export const sendEmail = async (
     if (!response.ok) {
       const errorText = await response.text();
       console.error('Server response:', errorText);
-      throw new Error(`Server error: ${response.status}`);
+      throw new Error(`Server error: ${response.status} - ${errorText}`);
     }
     
     const result = await response.json();
