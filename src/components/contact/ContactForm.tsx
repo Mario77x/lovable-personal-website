@@ -78,12 +78,12 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      // Use EmailJS to send the email
+      // Use EmailJS to send the email with the provided service credentials
       const result = await emailjs.sendForm(
-        'service_id', // Replace with your EmailJS service ID
-        'template_id', // Replace with your EmailJS template ID
+        'service_v1xv3on', // Real EmailJS service ID
+        'template_6hwmtnp', // Real EmailJS template ID
         formRef.current as HTMLFormElement,
-        'public_key' // Replace with your EmailJS public key
+        'M05M2sfExhJdXGZl6' // Real EmailJS public key
       );
 
       console.log('Email successfully sent!', result.text);
