@@ -1,6 +1,6 @@
 
-import { createClient } from '@supabase/supabase-js';
 import { ContactFormData } from '@/components/contact/form-utils/validationSchema';
+import { createClient } from '@supabase/supabase-js';
 
 // Type for email service response
 export type EmailServiceResponse = {
@@ -11,7 +11,13 @@ export type EmailServiceResponse = {
 // Create a Supabase client (using public URL and anon key is safe for client-side code)
 const supabaseUrl = 'https://diovezwcpjrdkpcbtcmz.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRpb3ZlendjcGpyZGtwY2J0Y216Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTg5MDQ0NzUsImV4cCI6MjAxNDQ4MDQ3NX0.tOStS7-PPTzXcO-bIkUi8WUSD4KTlGkdGf4XKXVHqaI';
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// Initialize the Supabase client with persistence set to 'none' to avoid the warning
+const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: false,
+  }
+});
 
 /**
  * Sends an email using Supabase Edge Function
@@ -41,7 +47,12 @@ export const sendEmail = async (
     console.log("SDK response:", data, error);
     
     if (error) {
-      throw new Error(`SDK error: ${error.message || 'Unknown error'}`);
+      console.error('Error from Supabase Edge Function:', error);
+      // Return a user-friendly error message
+      return {
+        success: false,
+        message: 'Unable to send your message at this time. Please try again later.'
+      };
     }
     
     return {
@@ -52,11 +63,10 @@ export const sendEmail = async (
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     console.error('Error sending email:', errorMessage);
     
-    // For now, return a success message even if there's an error
-    // This is a temporary solution until the Edge Function is fully working
+    // Return a user-friendly error message
     return { 
-      success: true, 
-      message: 'Your message has been received!' 
+      success: false, 
+      message: 'We encountered an issue sending your message. Please try again later.' 
     };
   }
 };
