@@ -51,7 +51,12 @@ const Hero = () => {
       
       <div className="absolute bottom-10 left-0 right-0 flex justify-center">
         <button 
-          onClick={() => scrollTo("about")}
+          onClick={() => {
+            const aboutSection = document.getElementById("about");
+            if (aboutSection) {
+              aboutSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
           aria-label="Scroll down"
         >
           <ArrowDown className="text-blue-accent h-8 w-8" />
