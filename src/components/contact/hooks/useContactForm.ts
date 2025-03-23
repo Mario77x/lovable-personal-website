@@ -2,15 +2,10 @@
 import { useRef, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { validateContactForm } from "../form-utils/validation";
-import { sendEmail, ContactFormData } from "@/utils/emailService";
+import { sendEmail } from "@/utils/emailService";
+import { ContactFormData } from "../form-utils/validationSchema";
 
-export type FormState = {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-  captcha: string;
-};
+export type FormState = ContactFormData;
 
 export type FormStatus = "idle" | "success" | "error";
 
@@ -82,7 +77,7 @@ export const useContactForm = () => {
       }
 
       // Create a contactFormData object to pass to sendEmail
-      const contactFormData: ContactFormData = {
+      const contactFormData = {
         name: formState.name,
         email: formState.email,
         subject: formState.subject,

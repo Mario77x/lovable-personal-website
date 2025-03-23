@@ -10,6 +10,7 @@ interface FormInputProps {
   label: string;
   placeholder: string;
   error?: string;
+  required?: boolean;
 }
 
 const FormInput = ({
@@ -20,12 +21,13 @@ const FormInput = ({
   onChange,
   label,
   placeholder,
-  error
+  error,
+  required = false
 }: FormInputProps) => {
   return (
     <div>
       <label htmlFor={id} className="block text-gray-300 mb-2">
-        {label}
+        {label} {required && <span className="text-red-500">*</span>}
       </label>
       <input
         id={id}
@@ -38,8 +40,10 @@ const FormInput = ({
           error ? "border-red-500" : "border-gray-700 focus:border-blue-accent"
         )}
         placeholder={placeholder}
+        aria-invalid={!!error}
+        aria-describedby={error ? `${id}-error` : undefined}
       />
-      {error && <p className="mt-1 text-red-500 text-sm">{error}</p>}
+      {error && <p id={`${id}-error`} className="mt-1 text-red-500 text-sm">{error}</p>}
     </div>
   );
 };

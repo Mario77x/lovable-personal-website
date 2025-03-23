@@ -1,11 +1,10 @@
 
 import { createClient } from '@supabase/supabase-js';
+import { ContactFormData } from '@/components/contact/form-utils/validationSchema';
 
-// Type for form data
-export type ContactFormData = {
-  name: string;
-  email: string;
-  subject: string;
+// Type for email service response
+export type EmailServiceResponse = {
+  success: boolean;
   message: string;
 };
 
@@ -20,8 +19,8 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
  */
 export const sendEmail = async (
   formElement: HTMLFormElement,
-  formData?: ContactFormData
-): Promise<{ success: boolean; message: string }> => {
+  formData: Omit<ContactFormData, 'captcha'>
+): Promise<EmailServiceResponse> => {
   try {
     // Extract form data to send to the edge function
     const formDataToSend = new FormData(formElement);
@@ -50,7 +49,15 @@ export const sendEmail = async (
       throw new Error(`Failed to send email: ${error.message}`);
     }
     
-    // If we got here, we have a response, but it might be HTML
+    // Handle successful JSON response
+    if (data && typeof data === 'object') {
+      return { 
+        success: true, 
+        message: data.message || 'Your message has been sent successfully!' 
+      };
+    }
+    
+    // If we got here with a string response, it might be HTML
     if (typeof data === 'string') {
       // This is likely HTML, try to determine if it was success or failure
       if (data.includes('success') || data.includes('200')) {
@@ -59,14 +66,14 @@ export const sendEmail = async (
           message: 'Your message has been sent successfully!' 
         };
       } else {
-        throw new Error('Received HTML response from server');
+        throw new Error('Received unexpected HTML response from server');
       }
     }
     
-    // Handle successful JSON response
+    // Default success response
     return { 
       success: true, 
-      message: data?.message || 'Your message has been sent successfully!' 
+      message: 'Your message has been sent successfully!' 
     };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';

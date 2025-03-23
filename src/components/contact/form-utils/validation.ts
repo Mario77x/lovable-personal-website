@@ -1,41 +1,28 @@
 
-type FormState = {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-  captcha: string;
-};
+import { contactFormSchema, ContactFormData } from "./validationSchema";
 
-export const validateContactForm = (formState: FormState) => {
-  const errors: Record<string, string> = {};
+export const validateContactForm = (formState: ContactFormData) => {
+  const result = contactFormSchema.safeParse(formState);
   
-  if (!formState.name.trim()) {
-    errors.name = "Name is required";
+  if (result.success) {
+    return {
+      errors: {},
+      isValid: true
+    };
+  } else {
+    // Convert zod errors to our error format
+    const errors: Record<string, string> = {};
+    
+    result.error.errors.forEach((error) => {
+      if (error.path.length > 0) {
+        const field = error.path[0].toString();
+        errors[field] = error.message;
+      }
+    });
+    
+    return {
+      errors,
+      isValid: false
+    };
   }
-  
-  if (!formState.email.trim()) {
-    errors.email = "Email is required";
-  } else if (!/^\S+@\S+\.\S+$/.test(formState.email)) {
-    errors.email = "Please enter a valid email address";
-  }
-  
-  if (!formState.subject.trim()) {
-    errors.subject = "Subject is required";
-  }
-  
-  if (!formState.message.trim()) {
-    errors.message = "Message is required";
-  }
-  
-  if (!formState.captcha.trim()) {
-    errors.captcha = "Please complete the captcha";
-  } else if (formState.captcha.toLowerCase() !== "blue") {
-    errors.captcha = "Incorrect captcha answer";
-  }
-  
-  return {
-    errors,
-    isValid: Object.keys(errors).length === 0
-  };
 };

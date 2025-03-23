@@ -22,6 +22,7 @@ const ContactFormFields = ({ formState, handleChange, errors }: ContactFormField
           label="Name"
           placeholder="Your name"
           error={errors.name}
+          required
         />
         
         <FormInput
@@ -33,6 +34,7 @@ const ContactFormFields = ({ formState, handleChange, errors }: ContactFormField
           label="Email"
           placeholder="Your email"
           error={errors.email}
+          required
         />
       </div>
       
@@ -45,6 +47,7 @@ const ContactFormFields = ({ formState, handleChange, errors }: ContactFormField
         label="Subject"
         placeholder="Subject of your message"
         error={errors.subject}
+        required
       />
       
       <FormTextarea
@@ -55,6 +58,7 @@ const ContactFormFields = ({ formState, handleChange, errors }: ContactFormField
         label="Message"
         placeholder="Your message"
         error={errors.message}
+        required
       />
       
       <FormInput
@@ -66,6 +70,7 @@ const ContactFormFields = ({ formState, handleChange, errors }: ContactFormField
         label="What color is used as an accent in this website? (anti-spam)"
         placeholder="Your answer"
         error={errors.captcha}
+        required
       />
     </>
   );
