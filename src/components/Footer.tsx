@@ -1,6 +1,4 @@
-
 import { ArrowUp } from "lucide-react";
-
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -8,17 +6,11 @@ const Footer = () => {
       behavior: "smooth"
     });
   };
-
   const currentYear = new Date().getFullYear();
-
   return <>
       {/* Positioned arrow outside footer container with more negative margin */}
       <div className="flex justify-center -mb-8">
-        <button 
-          onClick={scrollToTop} 
-          aria-label="Scroll to top" 
-          className="p-3 bg-dark-bg text-blue-accent hover:text-blue-light transition-colors rounded-full border border-gray-800 shadow-blue-glow z-10"
-        >
+        <button onClick={scrollToTop} aria-label="Scroll to top" className="p-3 bg-dark-bg text-blue-accent hover:text-blue-light transition-colors border border-gray-800 shadow-blue-glow z-10 rounded-none">
           <ArrowUp size={20} />
         </button>
       </div>
@@ -40,5 +32,4 @@ const Footer = () => {
       </footer>
     </>;
 };
-
 export default Footer;
