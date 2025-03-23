@@ -92,60 +92,49 @@ export const sendEmail = async (
         console.error('Development proxy error:', proxyError);
         
         // In development, we'll simulate success for easier testing
-        // Comment this out if you want to see real errors in development
         console.log('DEV MODE: Simulating successful email sending for testing');
         return {
           success: true,
           message: 'DEV MODE: Message simulated as sent successfully'
         };
-        
-        // Uncomment this to propagate real errors in development
-        // throw proxyError;
       }
     } else {
       // Use Supabase Edge Function directly in production
       console.log("Using Supabase Edge Function for email sending");
-      const { data, error } = await supabase.functions.invoke('send-email', {
-        body: formDataObject,
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+      
+      try {
+        const { data, error } = await supabase.functions.invoke('send-email', {
+          body: formDataObject,
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          }
+        });
+        
+        console.log('Supabase Edge Function response:', data);
+        
+        if (error) {
+          console.error('Supabase Edge Function error:', error);
+          throw new Error(`Failed to send email: ${error.message}`);
         }
-      });
-      
-      console.log('Supabase Edge Function response:', data);
-      
-      if (error) {
-        console.error('Supabase Edge Function error:', error);
-        throw new Error(`Failed to send email: ${error.message}`);
-      }
-      
-      // Handle successful JSON response
-      if (data && typeof data === 'object') {
-        return { 
-          success: true, 
-          message: data.message || 'Your message has been sent successfully!' 
-        };
-      }
-      
-      // If we got here with a string response, it might be HTML
-      if (typeof data === 'string') {
-        // This is likely HTML, try to determine if it was success or failure
-        if (data.includes('success') || data.includes('200')) {
+        
+        // Handle successful JSON response
+        if (data && typeof data === 'object') {
           return { 
             success: true, 
-            message: 'Your message has been sent successfully!' 
+            message: data.message || 'Your message has been sent successfully!' 
           };
-        } else {
-          throw new Error('Received unexpected HTML response from server');
         }
+        
+        // Default success response
+        return { 
+          success: true, 
+          message: 'Your message has been sent successfully!' 
+        };
+      } catch (error) {
+        console.error('Error calling Supabase Edge Function:', error);
+        throw error; // Re-throw to be caught by the outer try/catch
       }
-      
-      // Default success response
-      return { 
-        success: true, 
-        message: 'Your message has been sent successfully!' 
-      };
     }
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
