@@ -11,9 +11,8 @@ export type ContactFormData = {
 };
 
 /**
- * Sends an email using a combination of methods
- * First attempts to use Supabase Edge Function for security
- * Falls back to EmailJS direct method if CORS issues occur
+ * Sends an email using Supabase Edge Function to keep credentials secure
+ * No sensitive information is exposed in the frontend code
  */
 export const sendEmail = async (
   formElement: HTMLFormElement,
@@ -31,58 +30,36 @@ export const sendEmail = async (
       formDataObject[key] = value.toString();
     });
     
-    console.log("Attempting to send email via Supabase Edge Function...");
+    console.log("Sending email via Supabase Edge Function...");
     
-    try {
-      // First attempt: Try using the Supabase Edge Function
-      const response = await fetch(`${supabaseUrl}/functions/v1/send-email`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          // Add CORS headers for preflight requests
-          'Access-Control-Request-Method': 'POST',
-          'Access-Control-Request-Headers': 'Content-Type'
-        },
-        body: JSON.stringify(formDataObject),
-        mode: 'cors' // Explicitly set CORS mode
-      });
-      
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ message: 'Error processing response' }));
-        throw new Error(errorData.message || `Failed to send email: ${response.status}`);
-      }
-      
-      const result = await response.json();
-      console.log('Email successfully sent via Supabase!', result);
-      return { 
-        success: true, 
-        message: 'Your message has been sent successfully!' 
-      };
-    } catch (error) {
-      // If Supabase Edge Function fails (likely due to CORS), fall back to direct EmailJS
-      console.warn('Supabase Edge Function failed, falling back to direct EmailJS:', error);
-      
-      // Initialize EmailJS with public key (only needed in fallback scenario)
-      emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
-      
-      // Send email directly using EmailJS sendForm method
-      const result = await emailjs.sendForm(
-        'YOUR_EMAILJS_SERVICE_ID',
-        'YOUR_EMAILJS_TEMPLATE_ID',
-        formElement
-      );
-      
-      console.log('Email successfully sent via direct EmailJS fallback!', result.text);
-      return { 
-        success: true, 
-        message: 'Your message has been sent successfully!' 
-      };
+    // Send data to Supabase Edge Function with proper CORS handling
+    const response = await fetch(`${supabaseUrl}/functions/v1/send-email`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formDataObject),
+      // Don't set explicit mode to let browser handle it
+    });
+    
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({ message: 'Error processing response' }));
+      throw new Error(errorData.message || `Failed to send email: ${response.status}`);
     }
+    
+    const result = await response.json();
+    console.log('Email successfully sent via Supabase!', result);
+    return { 
+      success: true, 
+      message: 'Your message has been sent successfully!' 
+    };
   } catch (error) {
-    console.error('Error sending email (all methods failed):', error);
+    console.error('Error sending email via Supabase:', error);
+    
+    // Provide a clear error message without exposing any implementation details
     return { 
       success: false, 
-      message: error instanceof Error ? error.message : 'There was a problem sending your message. Please try again.' 
+      message: 'There was a problem sending your message. Please try again later or contact directly via the email address provided.' 
     };
   }
 };
