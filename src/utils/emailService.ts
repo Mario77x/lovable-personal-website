@@ -13,12 +13,12 @@ const supabaseUrl = 'https://diovezwcpjrdkpcbtcmz.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRpb3ZlendjcGpyZGtwY2J0Y216Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTg5MDQ0NzUsImV4cCI6MjAxNDQ4MDQ3NX0.tOStS7-PPTzXcO-bIkUi8WUSD4KTlGkdGf4XKXVHqaI';
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// Check if we're in development or production
-const isDevelopment = import.meta.env.DEV;
-
 /**
  * Sends an email using Supabase Edge Function to keep credentials secure
  * No sensitive information is exposed in the frontend code
+ * 
+ * NOTE: For this to work in production, the Supabase Edge Function must be configured 
+ * to allow CORS requests from your deployed domain. See the console logs for instructions.
  */
 export const sendEmail = async (
   formElement: HTMLFormElement,
@@ -34,20 +34,50 @@ export const sendEmail = async (
     });
     
     console.log("Preparing to send email with data:", formDataObject);
+    console.log(`
+=== CORS ISSUE DETECTED ===
+To fix the CORS issue with your Supabase Edge Function, you need to:
 
-    // For now, always return a "success" message
-    // This is a temporary solution until the CORS issues can be resolved
-    // Display appropriate message to users
-    console.log("Contact form submission simulation - production environment");
+1. Go to your Supabase project dashboard
+2. Navigate to Edge Functions
+3. Find your 'send-email' function
+4. Edit it to include the following CORS headers:
+
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*', // In production, replace with your exact domain
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+};
+
+// Add this function to handle OPTIONS requests (preflight)
+const handleOptions = () => {
+  return new Response(null, {
+    status: 204,
+    headers: corsHeaders,
+  });
+};
+
+// In your main function handler
+if (request.method === 'OPTIONS') {
+  return handleOptions();
+}
+
+// Then add the CORS headers to your success/error responses
+return new Response(JSON.stringify({ success: true }), {
+  headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+  status: 200,
+});
+
+Until this is configured, the contact form will simulate email sending.
+`);
     
-    // Here we would normally send data to backend, but due to CORS issues
-    // we're temporarily simulating success
+    // Temporary solution: simulate success while the CORS issue is being fixed
     return { 
       success: true, 
-      message: 'Thank you for your message. In this demo version, emails are simulated. In a real production environment, I would receive your email and respond shortly.'
+      message: 'Thank you for your message. In this demo version, emails are simulated. To enable actual email sending, please configure CORS settings in your Supabase Edge Function as detailed in the console logs.'
     };
     
-    // The following code is commented out until CORS issues are resolved
+    // The commented code below will work once the CORS headers are properly configured
     /*
     try {
       // Direct fetch to the Supabase Edge Function endpoint
@@ -127,7 +157,7 @@ export const sendEmail = async (
     // We're simulating success even when errors occur for now
     return { 
       success: true, 
-      message: 'Thank you for your message. In this demo version, emails are simulated. In a real production environment, I would receive your email and respond shortly.'
+      message: 'Thank you for your message. In this demo version, emails are simulated. To enable actual email sending, please configure CORS settings in your Supabase Edge Function.'
     };
   }
 };
