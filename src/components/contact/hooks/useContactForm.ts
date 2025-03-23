@@ -1,4 +1,3 @@
-
 import { useRef, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { validateContactForm } from "../form-utils/validation";
@@ -28,7 +27,6 @@ export const useContactForm = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     
-    // Map form field names to state property names
     const stateKey = name === "from_name" ? "name" :
                     name === "from_email" ? "email" : name;
     
@@ -37,7 +35,6 @@ export const useContactForm = () => {
       [stateKey]: value
     }));
 
-    // Clear error when field is edited
     if (errors[stateKey]) {
       setErrors(prev => {
         const newErrors = { ...prev };
@@ -55,6 +52,11 @@ export const useContactForm = () => {
       message: "",
       captcha: ""
     });
+  };
+
+  const dismissError = () => {
+    setSubmitStatus("idle");
+    setErrorMessage("");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -76,7 +78,6 @@ export const useContactForm = () => {
         throw new Error("Form reference is not available");
       }
 
-      // Create a contactFormData object to pass to sendEmail
       const contactFormData = {
         name: formState.name,
         email: formState.email,
@@ -96,8 +97,11 @@ export const useContactForm = () => {
           description: result.message,
         });
 
-        // Reset form after successful submission
         resetForm();
+        
+        setTimeout(() => {
+          setSubmitStatus("idle");
+        }, 3000);
       } else {
         setErrorMessage(result.message);
         setSubmitStatus("error");
@@ -125,13 +129,6 @@ export const useContactForm = () => {
       });
     } finally {
       setIsSubmitting(false);
-
-      // Reset success status after some time
-      if (submitStatus === "success") {
-        setTimeout(() => {
-          setSubmitStatus("idle");
-        }, 5000);
-      }
     }
   };
 
@@ -140,6 +137,7 @@ export const useContactForm = () => {
     formState,
     handleChange,
     handleSubmit,
+    dismissError,
     errors,
     isSubmitting,
     submitStatus,
