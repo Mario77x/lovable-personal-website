@@ -90,7 +90,7 @@ const Contact = () => {
       }, 5000);
     }
   };
-  return <section id="contact" className="py-20 relative">
+  return <section id="contact" className="relative py-0">
       {/* Background accent */}
       <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-blue-accent/5 blur-[120px] rounded-full -z-10" />
       
