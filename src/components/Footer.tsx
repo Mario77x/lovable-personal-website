@@ -15,7 +15,7 @@ const Footer = () => {
         </button>
       </div>
       
-      <footer className="bg-dark-surface border-t border-gray-800 pt-6 mt-3">
+      <footer className="bg-dark-surface border-t border-gray-800 pt-6 mt-3 my-[4px] py-[23px]">
         <div className="max-w-7xl mx-auto px-8 sm:px-6 lg:px-[31px]">
           <div className="flex flex-col md:flex-row justify-between items-center -mt-5">
             <div className="mb-4 md:mb-0">
