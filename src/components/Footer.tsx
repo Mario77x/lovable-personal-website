@@ -10,7 +10,7 @@ const Footer = () => {
   return <>
       {/* Centered arrow outside footer container */}
       <div className="flex justify-center -mb-6">
-        <button onClick={scrollToTop} aria-label="Scroll to top" className="p-3 bg-dark-bg text-blue-accent hover:bg-blue-accent/10 transition-colors rounded-none text-center font-normal">
+        <button onClick={scrollToTop} aria-label="Scroll to top" className="p-3 bg-dark-bg text-blue-accent hover transition-colors rounded-none text-center font-normal">
           <ArrowUp size={20} />
         </button>
       </div>
