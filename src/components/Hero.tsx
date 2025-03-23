@@ -1,4 +1,3 @@
-
 import { ArrowDown } from "lucide-react";
 import { scrollTo } from "@/utils/scrollTo";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -49,14 +48,9 @@ const Hero = () => {
         </div>
       </div>
       
-      <div className="absolute bottom-10 left-0 right-0 flex justify-center">
+      <div className={`absolute bottom-10 left-0 right-0 flex justify-center ${isMobile ? '-mb-5' : ''}`}>
         <button 
-          onClick={() => {
-            const aboutSection = document.getElementById("about");
-            if (aboutSection) {
-              aboutSection.scrollIntoView({ behavior: 'smooth' });
-            }
-          }}
+          onClick={() => scrollTo("about")}
           aria-label="Scroll down"
         >
           <ArrowDown className="text-blue-accent h-8 w-8" />
