@@ -9,9 +9,23 @@ export type EmailServiceResponse = {
 };
 
 // Create a Supabase client (using public URL and anon key is safe for client-side code)
+// Use a singleton pattern to prevent multiple instances
 const supabaseUrl = 'https://diovezwcpjrdkpcbtcmz.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRpb3ZlendjcGpyZGtwY2J0Y216Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTg5MDQ0NzUsImV4cCI6MjAxNDQ4MDQ3NX0.tOStS7-PPTzXcO-bIkUi8WUSD4KTlGkdGf4XKXVHqaI';
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// Create a singleton Supabase client to avoid multiple instances warning
+let supabaseClient: ReturnType<typeof createClient> | null = null;
+
+const getSupabaseClient = () => {
+  if (!supabaseClient) {
+    supabaseClient = createClient(supabaseUrl, supabaseAnonKey, {
+      auth: {
+        persistSession: false // Don't persist auth state to avoid conflicts
+      }
+    });
+  }
+  return supabaseClient;
+};
 
 /**
  * Sends an email using Supabase Edge Function
@@ -91,6 +105,7 @@ export const sendEmail = async (
       // As a fallback for fetch errors, try the SDK
       try {
         console.log("Attempting fallback with Supabase SDK");
+        const supabase = getSupabaseClient();
         const { data, error } = await supabase.functions.invoke('send-email', {
           body: payload
         });
