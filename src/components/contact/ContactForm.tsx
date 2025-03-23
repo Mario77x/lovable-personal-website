@@ -124,7 +124,7 @@ const ContactForm = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormInput
             id="name"
-            name="name"
+            name="from_name" // Changed to match EmailJS template parameter
             type="text"
             value={formState.name}
             onChange={handleChange}
@@ -135,7 +135,7 @@ const ContactForm = () => {
           
           <FormInput
             id="email"
-            name="email"
+            name="from_email" // Changed to match EmailJS template parameter
             type="email"
             value={formState.email}
             onChange={handleChange}
@@ -147,7 +147,7 @@ const ContactForm = () => {
         
         <FormInput
           id="subject"
-          name="subject"
+          name="subject" // Should match EmailJS template parameter
           type="text"
           value={formState.subject}
           onChange={handleChange}
@@ -158,7 +158,7 @@ const ContactForm = () => {
         
         <FormTextarea
           id="message"
-          name="message"
+          name="message" // Should match EmailJS template parameter
           value={formState.message}
           onChange={handleChange}
           label="Message"

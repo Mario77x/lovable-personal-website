@@ -64,34 +64,18 @@ export const sendEmail = async (
   } else {
     // Fallback to client-side EmailJS implementation for development
     try {
-      // Using the formData parameter directly instead of trying to access form values
-      if (!formData) {
-        throw new Error('Form data is required when sending emails directly');
-      }
-      
-      // These values should be stored as environment variables in production
-      const EMAILJS_CONFIG = {
-        SERVICE_ID: 'service_v1xv3on',
-        TEMPLATE_ID: 'template_6hwmtnp',
-        PUBLIC_KEY: 'M05M2sfExhJdXGZl6',
-      };
-      
       // Initialize EmailJS with public key
-      emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+      const EMAILJS_PUBLIC_KEY = 'M05M2sfExhJdXGZl6';
+      const EMAILJS_SERVICE_ID = 'service_v1xv3on';
+      const EMAILJS_TEMPLATE_ID = 'template_6hwmtnp';
       
-      // Create a template params object from the provided formData
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-      };
+      emailjs.init(EMAILJS_PUBLIC_KEY);
       
-      // Use the send method instead of sendForm for more reliability
-      const result = await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams
+      // Send email directly using EmailJS sendForm method with the form element
+      const result = await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formElement
       );
       
       console.log('Email successfully sent via client!', result.text);
