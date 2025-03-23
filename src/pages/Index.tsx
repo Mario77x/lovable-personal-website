@@ -11,13 +11,13 @@ import { useEffect } from "react";
 const Index = () => {
   useEffect(() => {
     // Update document title to match meta tags
-    document.title = "Passionate about product";
+    document.title = "Mario Savi | Product leadership";
   }, []);
 
   return (
     <MainLayout>
       <Helmet>
-        <title>Passionate about product</title>
+        <title>Mario Savi | Product leadership</title>
         <meta name="description" content="Passionate about product" />
         <meta property="og:title" content="Mario Savi | Product Leader" />
         <meta property="og:description" content="Passionate about product" />
