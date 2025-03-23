@@ -7,6 +7,7 @@ import FormStatusMessage from "./form-components/FormStatusMessage";
 import SubmitButton from "./form-components/SubmitButton";
 import { validateContactForm } from "./form-utils/validation";
 import { sendEmail, ContactFormData } from "@/utils/emailService";
+import emailjs from '@emailjs/browser';
 
 type FormState = {
   name: string;
@@ -68,47 +69,56 @@ const ContactForm = () => {
     setErrorMessage("");
 
     try {
-      // Create a contactFormData object to pass to sendEmail
-      const contactFormData: ContactFormData = {
-        name: formState.name,
-        email: formState.email,
-        subject: formState.subject,
-        message: formState.message
-      };
-
       if (!formRef.current) {
         throw new Error("Form reference is not available");
       }
 
-      const result = await sendEmail(
-        formRef.current,
-        contactFormData
-      );
+      // First try with the emailService that uses the Supabase Edge Function
+      try {
+        // Create a contactFormData object to pass to sendEmail
+        const contactFormData: ContactFormData = {
+          name: formState.name,
+          email: formState.email,
+          subject: formState.subject,
+          message: formState.message
+        };
 
-      if (result.success) {
-        setSubmitStatus("success");
-        toast({
-          title: "Message Sent",
-          description: result.message,
-        });
+        const result = await sendEmail(
+          formRef.current,
+          contactFormData
+        );
 
-        // Reset form after successful submission
-        setFormState({
-          name: "",
-          email: "",
-          subject: "",
-          message: "",
-          captcha: ""
-        });
-      } else {
-        setErrorMessage(result.message);
-        throw new Error(result.message);
+        if (result.success) {
+          setSubmitStatus("success");
+          toast({
+            title: "Message Sent",
+            description: result.message,
+          });
+
+          // Reset form after successful submission
+          setFormState({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+            captcha: ""
+          });
+        } else {
+          setErrorMessage(result.message);
+          throw new Error(result.message);
+        }
+      } catch (emailServiceError) {
+        console.error("Email service error:", emailServiceError);
+        throw emailServiceError;
       }
     } catch (error) {
       console.error("Error submitting form:", error);
       setSubmitStatus("error");
       
-      const errorMsg = error instanceof Error ? error.message : "There was a problem sending your message. Please try again.";
+      const errorMsg = error instanceof Error 
+        ? error.message 
+        : "There was a problem sending your message. Please try again or contact directly via email.";
+      
       setErrorMessage(errorMsg);
       
       toast({
