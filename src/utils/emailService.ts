@@ -11,8 +11,9 @@ export type ContactFormData = {
 };
 
 /**
- * Sends an email using EmailJS
- * This function will use Supabase Edge Function to handle email sending securely
+ * Sends an email using a combination of methods
+ * First attempts to use Supabase Edge Function for security
+ * Falls back to EmailJS direct method if CORS issues occur
  */
 export const sendEmail = async (
   formElement: HTMLFormElement,
@@ -20,8 +21,6 @@ export const sendEmail = async (
 ): Promise<{ success: boolean; message: string }> => {
   // Define the Supabase URL - this is your public Supabase project URL
   const supabaseUrl = 'https://diovezwcpjrdkpcbtcmz.supabase.co';
-  
-  console.log("Using Supabase Edge Function to send email");
   
   try {
     // Extract form data to send to the edge function
@@ -32,36 +31,58 @@ export const sendEmail = async (
       formDataObject[key] = value.toString();
     });
     
-    // Send data to Supabase Edge Function
-    // No Authorization header needed when calling from the browser to a public edge function
-    const response = await fetch(`${supabaseUrl}/functions/v1/send-email`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formDataObject)
-    });
+    console.log("Attempting to send email via Supabase Edge Function...");
     
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({ message: 'Error processing response' }));
-      throw new Error(errorData.message || `Failed to send email: ${response.status}`);
+    try {
+      // First attempt: Try using the Supabase Edge Function
+      const response = await fetch(`${supabaseUrl}/functions/v1/send-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add CORS headers for preflight requests
+          'Access-Control-Request-Method': 'POST',
+          'Access-Control-Request-Headers': 'Content-Type'
+        },
+        body: JSON.stringify(formDataObject),
+        mode: 'cors' // Explicitly set CORS mode
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ message: 'Error processing response' }));
+        throw new Error(errorData.message || `Failed to send email: ${response.status}`);
+      }
+      
+      const result = await response.json();
+      console.log('Email successfully sent via Supabase!', result);
+      return { 
+        success: true, 
+        message: 'Your message has been sent successfully!' 
+      };
+    } catch (error) {
+      // If Supabase Edge Function fails (likely due to CORS), fall back to direct EmailJS
+      console.warn('Supabase Edge Function failed, falling back to direct EmailJS:', error);
+      
+      // Initialize EmailJS with public key (only needed in fallback scenario)
+      emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
+      
+      // Send email directly using EmailJS sendForm method
+      const result = await emailjs.sendForm(
+        'YOUR_EMAILJS_SERVICE_ID',
+        'YOUR_EMAILJS_TEMPLATE_ID',
+        formElement
+      );
+      
+      console.log('Email successfully sent via direct EmailJS fallback!', result.text);
+      return { 
+        success: true, 
+        message: 'Your message has been sent successfully!' 
+      };
     }
-    
-    const result = await response.json();
-    console.log('Email successfully sent via Supabase!', result);
-    return { 
-      success: true, 
-      message: 'Your message has been sent successfully!' 
-    };
   } catch (error) {
-    console.error('Error sending email via Supabase:', error);
-    
-    // If there's a CORS error or network issue, we could show a more specific message
-    const errorMessage = error instanceof Error ? error.message : 'There was a problem sending your message. Please try again.';
-    
+    console.error('Error sending email (all methods failed):', error);
     return { 
       success: false, 
-      message: errorMessage
+      message: error instanceof Error ? error.message : 'There was a problem sending your message. Please try again.' 
     };
   }
 };
