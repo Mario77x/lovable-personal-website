@@ -7,6 +7,7 @@ import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import { Helmet } from "react-helmet";
 import { useEffect } from "react";
+import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
   useEffect(() => {
@@ -34,6 +35,7 @@ const Index = () => {
       <Experience />
       <Skills />
       <Contact />
+      <Toaster />
     </MainLayout>
   );
 };
