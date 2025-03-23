@@ -74,12 +74,12 @@ export const sendEmail = async (
       // Initialize EmailJS with public key
       emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
       
-      // Create a FormData object with our data
+      // Create a template params object from the provided formData
       const templateParams = {
-        from_name: formElement.name.value || 'Website Visitor',
-        from_email: formElement.email.value || 'no-email@provided.com',
-        subject: formElement.subject.value || 'Website Contact',
-        message: formElement.message.value || 'No message provided',
+        from_name: formData?.name || 'Website Visitor',
+        from_email: formData?.email || 'no-email@provided.com',
+        subject: formData?.subject || 'Website Contact',
+        message: formData?.message || 'No message provided',
       };
       
       // Use the send method instead of sendForm for more reliability
