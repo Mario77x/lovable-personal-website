@@ -44,7 +44,7 @@ const About = () => {
           {/* About text */}
           <div className="space-y-6 reveal-on-scroll">
             <h3 className="text-2xl md:text-3xl font-bold">
-              Lead Product Manager with a passion for innovation
+              Product Lead with a passion for innovation
             </h3>
             
             <p className="text-gray-300 text-balance">

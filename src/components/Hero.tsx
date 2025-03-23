@@ -19,7 +19,7 @@ const Hero = () => {
         <div className="space-y-6 max-w-4xl -mt-5">
           <div className="reveal-on-scroll">
             <span className="bg-blue-accent/20 text-blue-accent rounded-full px-4 py-1 text-sm font-medium inline-block mb-4">
-              Lead Product Manager
+              Product Lead
             </span>
           </div>
           

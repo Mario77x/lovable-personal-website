@@ -19,14 +19,14 @@ const Index = () => {
       <Helmet>
         <title>Passionate about product</title>
         <meta name="description" content="Passionate about product" />
-        <meta property="og:title" content="Mario Savi | Lead Product Manager" />
+        <meta property="og:title" content="Mario Savi | Product Lead" />
         <meta property="og:description" content="Passionate about product" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Mario Savi | Lead Product Manager" />
+        <meta name="twitter:title" content="Mario Savi | Product Lead" />
         <meta name="twitter:description" content="Passionate about product" />
       </Helmet>
       <Hero />

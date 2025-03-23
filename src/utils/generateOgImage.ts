@@ -21,7 +21,7 @@ export const generateOgImage = () => {
   
   ctx.fillStyle = '#3b82f6'; // Blue accent
   ctx.font = '48px Arial';
-  ctx.fillText('Lead Product Manager', canvas.width / 2, canvas.height / 2 + 40);
+  ctx.fillText('Product Lead', canvas.width / 2, canvas.height / 2 + 40);
   
   ctx.fillStyle = '#ffffff';
   ctx.font = '36px Arial';
