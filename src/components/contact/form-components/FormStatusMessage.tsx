@@ -1,8 +1,8 @@
 
-import { CheckCircle, AlertCircle } from "lucide-react";
+import { CheckCircle, AlertCircle, Loader } from "lucide-react";
 
 interface FormStatusMessageProps {
-  status: "success" | "error" | "idle";
+  status: "success" | "error" | "loading" | "idle";
   customError?: string;
 }
 
@@ -11,6 +11,13 @@ const FormStatusMessage = ({ status, customError }: FormStatusMessageProps) => {
 
   return (
     <>
+      {status === "loading" && (
+        <div className="p-4 bg-blue-500/20 border border-blue-500/30 rounded-lg text-blue-400 flex items-center">
+          <Loader size={20} className="mr-2 flex-shrink-0 animate-spin" />
+          <span>Sending your message, please wait...</span>
+        </div>
+      )}
+      
       {status === "success" && (
         <div className="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400 flex items-center">
           <CheckCircle size={20} className="mr-2 flex-shrink-0" />

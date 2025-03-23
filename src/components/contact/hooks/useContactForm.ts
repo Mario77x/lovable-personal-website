@@ -7,7 +7,7 @@ import { ContactFormData } from "../form-utils/validationSchema";
 
 export type FormState = ContactFormData;
 
-export type FormStatus = "idle" | "success" | "error";
+export type FormStatus = "idle" | "loading" | "success" | "error";
 
 export const useContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -69,7 +69,7 @@ export const useContactForm = () => {
     
     setIsSubmitting(true);
     setErrorMessage("");
-    setSubmitStatus("idle");
+    setSubmitStatus("loading"); // Change to loading state when submitting
 
     try {
       if (!formRef.current) {
@@ -126,12 +126,12 @@ export const useContactForm = () => {
     } finally {
       setIsSubmitting(false);
 
-      // Reset status after some time
-      setTimeout(() => {
-        if (submitStatus === "success") {
+      // Reset success status after some time
+      if (submitStatus === "success") {
+        setTimeout(() => {
           setSubmitStatus("idle");
-        }
-      }, 5000);
+        }, 5000);
+      }
     }
   };
 
