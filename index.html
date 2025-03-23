@@ -18,11 +18,23 @@
     <meta name="twitter:description" content="Passionate about product" />
     <meta name="robots" content="noimageindex" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <style>
+      /* Hide the Lovable badge */
+      .lovable-badge {
+        display: none !important;
+      }
+    </style>
   </head>
 
   <body>
     <div id="root"></div>
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script>
+      // Configuration to disable the Lovable badge
+      window.GPTE_CONFIG = {
+        hideBadge: true
+      };
+    </script>
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
