@@ -22,22 +22,6 @@
       /* Hide the Lovable badge */
       .lovable-badge {
         display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        width: 0 !important;
-        height: 0 !important;
-        position: absolute !important;
-        z-index: -9999 !important;
-      }
-
-      /* Additional selectors that might be used */
-      [class*="lovable-badge"],
-      [id*="lovable-badge"],
-      [data-lovable-badge] {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
       }
     </style>
   </head>
@@ -50,20 +34,6 @@
       window.GPTE_CONFIG = {
         hideBadge: true
       };
-      
-      // Additional script to remove badge after DOM load
-      document.addEventListener('DOMContentLoaded', function() {
-        // Remove any badge elements that might appear
-        const removeElements = function() {
-          const badges = document.querySelectorAll('[class*="lovable-badge"], [id*="lovable-badge"]');
-          badges.forEach(el => el.remove());
-        };
-        
-        // Run immediately and after a small delay to catch dynamically added elements
-        removeElements();
-        setTimeout(removeElements, 500);
-        setTimeout(removeElements, 2000);
-      });
     </script>
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
