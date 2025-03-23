@@ -1,5 +1,5 @@
 
-import emailjs from '@emailjs/browser';
+import { createClient } from '@supabase/supabase-js';
 
 // Type for form data
 export type ContactFormData = {
@@ -8,6 +8,11 @@ export type ContactFormData = {
   subject: string;
   message: string;
 };
+
+// Create a Supabase client (using public URL and anon key is safe for client-side code)
+const supabaseUrl = 'https://diovezwcpjrdkpcbtcmz.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRpb3ZlendjcGpyZGtwY2J0Y216Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTg5MDQ0NzUsImV4cCI6MjAxNDQ4MDQ3NX0.tOStS7-PPTzXcO-bIkUi8WUSD4KTlGkdGf4XKXVHqaI';
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 /**
  * Sends an email using Supabase Edge Function to keep credentials secure
@@ -29,28 +34,23 @@ export const sendEmail = async (
     console.log("Preparing to send email via Supabase Edge Function");
     console.log("Form data:", formDataObject);
     
-    // Use EmailJS as a fallback since the Edge Function is having issues
-    try {
-      // Try EmailJS instead of the Edge Function
-      const result = await emailjs.sendForm(
-        'service_contact_form',  // Replace with your EmailJS service ID
-        'template_contact',      // Replace with your EmailJS template ID
-        formElement,
-        'your_emailjs_public_key' // Replace with your EmailJS public key
-      );
-      
-      console.log('EmailJS result:', result.text);
-      
-      return { 
-        success: true, 
-        message: 'Your message has been sent successfully!' 
-      };
-    } catch (emailjsError) {
-      console.error('EmailJS error:', emailjsError);
-      
-      // If EmailJS fails, throw an error to be caught by the outer try/catch
-      throw new Error('Failed to send email via EmailJS. Please try again later.');
+    // Invoke the Supabase Edge Function
+    const { data, error } = await supabase.functions.invoke('send-email', {
+      body: formDataObject,
+    });
+    
+    console.log('Supabase Edge Function response:', data);
+    
+    if (error) {
+      console.error('Supabase Edge Function error:', error);
+      throw new Error(`Failed to send email: ${error.message}`);
     }
+    
+    // Handle successful response
+    return { 
+      success: true, 
+      message: data?.message || 'Your message has been sent successfully!' 
+    };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     console.error('Error sending email:', errorMessage);

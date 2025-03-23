@@ -7,7 +7,6 @@ import FormStatusMessage from "./form-components/FormStatusMessage";
 import SubmitButton from "./form-components/SubmitButton";
 import { validateContactForm } from "./form-utils/validation";
 import { sendEmail, ContactFormData } from "@/utils/emailService";
-import emailjs from '@emailjs/browser';
 
 type FormState = {
   name: string;
@@ -73,43 +72,43 @@ const ContactForm = () => {
         throw new Error("Form reference is not available");
       }
 
-      // First try with the emailService that uses the Supabase Edge Function
-      try {
-        // Create a contactFormData object to pass to sendEmail
-        const contactFormData: ContactFormData = {
-          name: formState.name,
-          email: formState.email,
-          subject: formState.subject,
-          message: formState.message
-        };
+      // Create a contactFormData object to pass to sendEmail
+      const contactFormData: ContactFormData = {
+        name: formState.name,
+        email: formState.email,
+        subject: formState.subject,
+        message: formState.message
+      };
 
-        const result = await sendEmail(
-          formRef.current,
-          contactFormData
-        );
+      const result = await sendEmail(
+        formRef.current,
+        contactFormData
+      );
 
-        if (result.success) {
-          setSubmitStatus("success");
-          toast({
-            title: "Message Sent",
-            description: result.message,
-          });
+      if (result.success) {
+        setSubmitStatus("success");
+        toast({
+          title: "Message Sent",
+          description: result.message,
+        });
 
-          // Reset form after successful submission
-          setFormState({
-            name: "",
-            email: "",
-            subject: "",
-            message: "",
-            captcha: ""
-          });
-        } else {
-          setErrorMessage(result.message);
-          throw new Error(result.message);
-        }
-      } catch (emailServiceError) {
-        console.error("Email service error:", emailServiceError);
-        throw emailServiceError;
+        // Reset form after successful submission
+        setFormState({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+          captcha: ""
+        });
+      } else {
+        setErrorMessage(result.message);
+        setSubmitStatus("error");
+        
+        toast({
+          title: "Error",
+          description: result.message,
+          variant: "destructive",
+        });
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -146,7 +145,7 @@ const ContactForm = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormInput
             id="name"
-            name="from_name" // Matches EmailJS template parameter
+            name="from_name" // Matches template parameter
             type="text"
             value={formState.name}
             onChange={handleChange}
@@ -157,7 +156,7 @@ const ContactForm = () => {
           
           <FormInput
             id="email"
-            name="from_email" // Matches EmailJS template parameter
+            name="from_email" // Matches template parameter
             type="email"
             value={formState.email}
             onChange={handleChange}
@@ -169,7 +168,7 @@ const ContactForm = () => {
         
         <FormInput
           id="subject"
-          name="subject" // Matches EmailJS template parameter
+          name="subject" // Matches template parameter
           type="text"
           value={formState.subject}
           onChange={handleChange}
@@ -180,7 +179,7 @@ const ContactForm = () => {
         
         <FormTextarea
           id="message"
-          name="message" // Matches EmailJS template parameter
+          name="message" // Matches template parameter
           value={formState.message}
           onChange={handleChange}
           label="Message"
