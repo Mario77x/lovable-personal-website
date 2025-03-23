@@ -1,12 +1,12 @@
 
 import { useRef, useState } from "react";
-import emailjs from '@emailjs/browser';
 import { useToast } from "@/hooks/use-toast";
 import FormInput from "./form-components/FormInput";
 import FormTextarea from "./form-components/FormTextarea";
 import FormStatusMessage from "./form-components/FormStatusMessage";
 import SubmitButton from "./form-components/SubmitButton";
 import { validateContactForm } from "./form-utils/validation";
+import { sendEmail } from "@/utils/emailService";
 
 type FormState = {
   name: string;
@@ -61,34 +61,34 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      const result = await emailjs.sendForm(
-        'service_v1xv3on',
-        'template_6hwmtnp',
-        formRef.current as HTMLFormElement,
-        'M05M2sfExhJdXGZl6'
+      const result = await sendEmail(
+        formRef.current as HTMLFormElement
       );
 
-      console.log('Email successfully sent!', result.text);
-      setSubmitStatus("success");
-      toast({
-        title: "Message Sent",
-        description: "Your message has been sent successfully!",
-      });
+      if (result.success) {
+        setSubmitStatus("success");
+        toast({
+          title: "Message Sent",
+          description: result.message,
+        });
 
-      // Reset form after successful submission
-      setFormState({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-        captcha: ""
-      });
+        // Reset form after successful submission
+        setFormState({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+          captcha: ""
+        });
+      } else {
+        throw new Error(result.message);
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
       setSubmitStatus("error");
       toast({
         title: "Error",
-        description: "There was a problem sending your message. Please try again.",
+        description: error instanceof Error ? error.message : "There was a problem sending your message. Please try again.",
         variant: "destructive",
       });
     } finally {
