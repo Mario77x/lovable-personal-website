@@ -14,11 +14,8 @@ const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 /**
- * Sends an email using Supabase Edge Function to keep credentials secure
- * No sensitive information is exposed in the frontend code
- * 
- * NOTE: For this to work in production, the Supabase Edge Function must be configured 
- * to allow CORS requests from your deployed domain. See the console logs for instructions.
+ * Sends an email using Supabase Edge Function
+ * The Edge Function now has proper CORS configuration
  */
 export const sendEmail = async (
   formElement: HTMLFormElement,
@@ -34,51 +31,15 @@ export const sendEmail = async (
     });
     
     console.log("Preparing to send email with data:", formDataObject);
-    console.log(`
-=== CORS ISSUE DETECTED ===
-To fix the CORS issue with your Supabase Edge Function, you need to:
 
-1. Go to your Supabase project dashboard
-2. Navigate to Edge Functions
-3. Find your 'send-email' function
-4. Edit it to include the following CORS headers:
-
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*', // In production, replace with your exact domain
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-};
-
-// Add this function to handle OPTIONS requests (preflight)
-const handleOptions = () => {
-  return new Response(null, {
-    status: 204,
-    headers: corsHeaders,
-  });
-};
-
-// In your main function handler
-if (request.method === 'OPTIONS') {
-  return handleOptions();
-}
-
-// Then add the CORS headers to your success/error responses
-return new Response(JSON.stringify({ success: true }), {
-  headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-  status: 200,
-});
-
-Until this is configured, the contact form will simulate email sending.
-`);
-    
-    // Temporary solution: simulate success while the CORS issue is being fixed
-    return { 
-      success: true, 
-      message: 'Thank you for your message. In this demo version, emails are simulated. To enable actual email sending, please configure CORS settings in your Supabase Edge Function as detailed in the console logs.'
+    // Clean up form field names to match what the edge function expects
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message
     };
     
-    // The commented code below will work once the CORS headers are properly configured
-    /*
     try {
       // Direct fetch to the Supabase Edge Function endpoint
       const endpoint = `${supabaseUrl}/functions/v1/send-email`;
@@ -90,7 +51,7 @@ Until this is configured, the contact form will simulate email sending.
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${supabaseAnonKey}`,
         },
-        body: JSON.stringify(formDataObject),
+        body: JSON.stringify(payload),
       });
       
       console.log("Response status:", response.status);
@@ -122,7 +83,7 @@ Until this is configured, the contact form will simulate email sending.
           message: data?.message || 'Your message has been sent successfully!'
         };
       } else {
-        throw new Error(`Failed to send email: ${data?.error || response.statusText}`);
+        throw new Error(`Failed to send email: ${data?.message || response.statusText}`);
       }
     } catch (fetchError) {
       console.error("Direct fetch error:", fetchError);
@@ -131,7 +92,7 @@ Until this is configured, the contact form will simulate email sending.
       try {
         console.log("Attempting fallback with Supabase SDK");
         const { data, error } = await supabase.functions.invoke('send-email', {
-          body: formDataObject
+          body: payload
         });
         
         console.log("SDK response:", data, error);
@@ -149,15 +110,13 @@ Until this is configured, the contact form will simulate email sending.
         throw sdkError;
       }
     }
-    */
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     console.error('Error sending email:', errorMessage);
     
-    // We're simulating success even when errors occur for now
     return { 
-      success: true, 
-      message: 'Thank you for your message. In this demo version, emails are simulated. To enable actual email sending, please configure CORS settings in your Supabase Edge Function.'
+      success: false, 
+      message: errorMessage
     };
   }
 };
