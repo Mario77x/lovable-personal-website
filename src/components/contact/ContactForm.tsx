@@ -33,16 +33,21 @@ const ContactForm = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    
+    // Map form field names to state property names
+    const stateKey = name === "from_name" ? "name" :
+                    name === "from_email" ? "email" : name;
+    
     setFormState(prev => ({
       ...prev,
-      [name]: value
+      [stateKey]: value
     }));
 
     // Clear error when field is edited
-    if (errors[name]) {
+    if (errors[stateKey]) {
       setErrors(prev => {
         const newErrors = { ...prev };
-        delete newErrors[name];
+        delete newErrors[stateKey];
         return newErrors;
       });
     }
@@ -124,7 +129,7 @@ const ContactForm = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormInput
             id="name"
-            name="from_name" // Changed to match EmailJS template parameter
+            name="from_name" // Matches EmailJS template parameter
             type="text"
             value={formState.name}
             onChange={handleChange}
@@ -135,7 +140,7 @@ const ContactForm = () => {
           
           <FormInput
             id="email"
-            name="from_email" // Changed to match EmailJS template parameter
+            name="from_email" // Matches EmailJS template parameter
             type="email"
             value={formState.email}
             onChange={handleChange}
@@ -147,7 +152,7 @@ const ContactForm = () => {
         
         <FormInput
           id="subject"
-          name="subject" // Should match EmailJS template parameter
+          name="subject" // Matches EmailJS template parameter
           type="text"
           value={formState.subject}
           onChange={handleChange}
@@ -158,7 +163,7 @@ const ContactForm = () => {
         
         <FormTextarea
           id="message"
-          name="message" // Should match EmailJS template parameter
+          name="message" // Matches EmailJS template parameter
           value={formState.message}
           onChange={handleChange}
           label="Message"
