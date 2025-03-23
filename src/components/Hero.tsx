@@ -1,3 +1,4 @@
+
 import { ArrowDown } from "lucide-react";
 import { scrollTo } from "@/utils/scrollTo";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -52,6 +53,7 @@ const Hero = () => {
         <button 
           onClick={() => scrollTo("about")}
           aria-label="Scroll down"
+          className="transform hover:-translate-y-1 duration-300"
         >
           <ArrowDown className="text-blue-accent h-8 w-8" />
         </button>
