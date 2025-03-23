@@ -66,6 +66,7 @@ const ContactForm = () => {
     
     setIsSubmitting(true);
     setErrorMessage("");
+    setSubmitStatus("idle");
 
     try {
       if (!formRef.current) {
@@ -106,7 +107,7 @@ const ContactForm = () => {
         
         toast({
           title: "Error",
-          description: result.message,
+          description: "Failed to send message. Please try again.",
           variant: "destructive",
         });
       }
@@ -130,7 +131,9 @@ const ContactForm = () => {
 
       // Reset status after some time
       setTimeout(() => {
-        setSubmitStatus("idle");
+        if (submitStatus === "success") {
+          setSubmitStatus("idle");
+        }
       }, 5000);
     }
   };

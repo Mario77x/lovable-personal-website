@@ -34,9 +34,13 @@ export const sendEmail = async (
     console.log("Preparing to send email via Supabase Edge Function");
     console.log("Form data:", formDataObject);
     
-    // Invoke the Supabase Edge Function
+    // Explicitly set headers for the function invocation
     const { data, error } = await supabase.functions.invoke('send-email', {
       body: formDataObject,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
     });
     
     console.log('Supabase Edge Function response:', data);
@@ -46,7 +50,20 @@ export const sendEmail = async (
       throw new Error(`Failed to send email: ${error.message}`);
     }
     
-    // Handle successful response
+    // If we got here, we have a response, but it might be HTML
+    if (typeof data === 'string') {
+      // This is likely HTML, try to determine if it was success or failure
+      if (data.includes('success') || data.includes('200')) {
+        return { 
+          success: true, 
+          message: 'Your message has been sent successfully!' 
+        };
+      } else {
+        throw new Error('Received HTML response from server');
+      }
+    }
+    
+    // Handle successful JSON response
     return { 
       success: true, 
       message: data?.message || 'Your message has been sent successfully!' 
@@ -57,7 +74,7 @@ export const sendEmail = async (
     
     return { 
       success: false, 
-      message: `There was a problem sending your message. Please try again later or contact directly via the email address provided.` 
+      message: `There was a problem sending your message. Please try again later or contact directly via the email address provided. (Error: ${errorMessage})` 
     };
   }
 };
