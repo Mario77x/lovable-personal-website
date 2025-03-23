@@ -13,17 +13,23 @@ export type ContactFormData = {
 /**
  * Sends an email using EmailJS
  * This function can be used in two ways:
- * 1. Directly using EmailJS on the client (for development or if no Supabase is available)
- * 2. Via Supabase Edge Function (for production use - more secure)
+ * 1. Via Supabase Edge Function (recommended for production - more secure)
+ * 2. Directly using EmailJS on the client (for development or if no Supabase is available)
  */
 export const sendEmail = async (
   formElement: HTMLFormElement,
   formData?: ContactFormData
 ): Promise<{ success: boolean; message: string }> => {
-  // Check if we're using Supabase by looking for the SUPABASE_URL environment variable
-  const useSupabase = import.meta.env.VITE_SUPABASE_URL;
+  // Define the Supabase URL
+  // If you're running this in production, set VITE_SUPABASE_URL in your Supabase project
+  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://diovezwcpjrdkpcbtcmz.supabase.co';
+  const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+  
+  // Check if we have the necessary Supabase credentials
+  const useSupabase = supabaseUrl && supabaseAnonKey;
   
   if (useSupabase) {
+    console.log("Using Supabase Edge Function to send email");
     // Extract form data to send to the edge function
     const formDataToSend = new FormData(formElement);
     const formDataObject: Record<string, string> = {};
@@ -34,18 +40,18 @@ export const sendEmail = async (
     
     try {
       // Send data to Supabase Edge Function
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-email`, {
+      const response = await fetch(`${supabaseUrl}/functions/v1/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+          'Authorization': `Bearer ${supabaseAnonKey}`
         },
         body: JSON.stringify(formDataObject)
       });
       
       if (!response.ok) {
         const result = await response.json().catch(() => ({ message: 'Error processing response' }));
-        throw new Error(result.message || 'Failed to send email via Supabase Edge Function');
+        throw new Error(result.message || `Failed to send email via Supabase Edge Function: ${response.status}`);
       }
       
       const result = await response.json();
@@ -58,10 +64,11 @@ export const sendEmail = async (
       console.error('Error sending email via Supabase:', error);
       return { 
         success: false, 
-        message: 'There was a problem sending your message. Please try again.' 
+        message: error instanceof Error ? error.message : 'There was a problem sending your message. Please try again.' 
       };
     }
   } else {
+    console.log("Falling back to client-side EmailJS implementation");
     // Fallback to client-side EmailJS implementation for development
     try {
       // Initialize EmailJS with public key
