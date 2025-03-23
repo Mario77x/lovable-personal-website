@@ -6,7 +6,7 @@ import FormTextarea from "./form-components/FormTextarea";
 import FormStatusMessage from "./form-components/FormStatusMessage";
 import SubmitButton from "./form-components/SubmitButton";
 import { validateContactForm } from "./form-utils/validation";
-import { sendEmail } from "@/utils/emailService";
+import { sendEmail, ContactFormData } from "@/utils/emailService";
 
 type FormState = {
   name: string;
@@ -61,8 +61,17 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
+      // Create a contactFormData object to pass to sendEmail
+      const contactFormData: ContactFormData = {
+        name: formState.name,
+        email: formState.email,
+        subject: formState.subject,
+        message: formState.message
+      };
+
       const result = await sendEmail(
-        formRef.current as HTMLFormElement
+        formRef.current as HTMLFormElement,
+        contactFormData
       );
 
       if (result.success) {

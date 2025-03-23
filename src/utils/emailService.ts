@@ -63,7 +63,6 @@ export const sendEmail = async (
     }
   } else {
     // Fallback to client-side EmailJS implementation for development
-    // NOTE: This should be replaced with the Supabase approach in production
     try {
       // These values should be stored as environment variables in production
       const EMAILJS_CONFIG = {
@@ -75,11 +74,19 @@ export const sendEmail = async (
       // Initialize EmailJS with public key
       emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
       
-      // Send the form data
-      const result = await emailjs.sendForm(
+      // Create a FormData object with our data
+      const templateParams = {
+        from_name: formElement.name.value || 'Website Visitor',
+        from_email: formElement.email.value || 'no-email@provided.com',
+        subject: formElement.subject.value || 'Website Contact',
+        message: formElement.message.value || 'No message provided',
+      };
+      
+      // Use the send method instead of sendForm for more reliability
+      const result = await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.TEMPLATE_ID,
-        formElement
+        templateParams
       );
       
       console.log('Email successfully sent via client!', result.text);
