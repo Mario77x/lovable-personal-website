@@ -16,9 +16,15 @@ export const generateFavicon = () => {
   const svgBlob = new Blob([iconSvg], { type: 'image/svg+xml' });
   const url = URL.createObjectURL(svgBlob);
   
-  const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-  link.type = 'image/svg+xml';
-  link.rel = 'icon';
-  link.href = url;
-  document.getElementsByTagName('head')[0].appendChild(link);
+  const link = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
+  if (link) {
+    link.type = 'image/svg+xml';
+    link.href = url;
+  } else {
+    const newLink = document.createElement('link');
+    newLink.rel = 'icon';
+    newLink.type = 'image/svg+xml';
+    newLink.href = url;
+    document.head.appendChild(newLink);
+  }
 };

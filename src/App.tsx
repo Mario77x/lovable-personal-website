@@ -15,6 +15,17 @@ const App = () => {
   useEffect(() => {
     // Generate dynamic favicon on mount
     generateFavicon();
+    
+    // Force refresh metadata for social sharing
+    const metaTags = document.querySelectorAll('meta[property^="og:"]');
+    metaTags.forEach(tag => {
+      // This trick forces browsers to re-fetch the metadata
+      const parent = tag.parentNode;
+      if (parent) {
+        const clone = tag.cloneNode(true);
+        parent.replaceChild(clone, tag);
+      }
+    });
   }, []);
 
   return (
