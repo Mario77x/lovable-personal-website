@@ -69,8 +69,12 @@ const ContactForm = () => {
         message: formState.message
       };
 
+      if (!formRef.current) {
+        throw new Error("Form reference is not available");
+      }
+
       const result = await sendEmail(
-        formRef.current as HTMLFormElement,
+        formRef.current,
         contactFormData
       );
 

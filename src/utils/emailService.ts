@@ -43,13 +43,13 @@ export const sendEmail = async (
         body: JSON.stringify(formDataObject)
       });
       
-      const result = await response.json();
-      
       if (!response.ok) {
+        const result = await response.json().catch(() => ({ message: 'Error processing response' }));
         throw new Error(result.message || 'Failed to send email via Supabase Edge Function');
       }
       
-      console.log('Email successfully sent via Supabase!');
+      const result = await response.json();
+      console.log('Email successfully sent via Supabase!', result);
       return { 
         success: true, 
         message: 'Your message has been sent successfully!' 
@@ -64,6 +64,11 @@ export const sendEmail = async (
   } else {
     // Fallback to client-side EmailJS implementation for development
     try {
+      // Using the formData parameter directly instead of trying to access form values
+      if (!formData) {
+        throw new Error('Form data is required when sending emails directly');
+      }
+      
       // These values should be stored as environment variables in production
       const EMAILJS_CONFIG = {
         SERVICE_ID: 'service_v1xv3on',
@@ -76,10 +81,10 @@ export const sendEmail = async (
       
       // Create a template params object from the provided formData
       const templateParams = {
-        from_name: formData?.name || 'Website Visitor',
-        from_email: formData?.email || 'no-email@provided.com',
-        subject: formData?.subject || 'Website Contact',
-        message: formData?.message || 'No message provided',
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
       };
       
       // Use the send method instead of sendForm for more reliability
