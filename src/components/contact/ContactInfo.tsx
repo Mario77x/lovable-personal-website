@@ -1,7 +1,42 @@
 
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, MousePointer } from "lucide-react";
+import { useState } from "react";
 
 const ContactInfo = () => {
+  const [emailRevealed, setEmailRevealed] = useState(false);
+  
+  // Email parts are separated to prevent simple scraping
+  const emailParts = ["contact", "mariosavi", "com"];
+  
+  const revealEmail = () => {
+    setEmailRevealed(true);
+  };
+  
+  const getEmailDisplay = () => {
+    if (emailRevealed) {
+      return (
+        <a 
+          href={`mailto:${emailParts[0]}@${emailParts[1]}.${emailParts[2]}`}
+          className="text-white hover:text-blue-accent transition-colors"
+          rel="nofollow noreferrer"
+        >
+          {emailParts[0]}@{emailParts[1]}.{emailParts[2]}
+        </a>
+      );
+    } else {
+      return (
+        <button 
+          onClick={revealEmail} 
+          className="text-white hover:text-blue-accent transition-colors flex items-center"
+          aria-label="Reveal email address"
+        >
+          <span>Click to reveal email</span>
+          <MousePointer size={14} className="ml-1" />
+        </button>
+      );
+    }
+  };
+
   return (
     <div className="glass-card p-8 rounded-lg h-full">
       <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
@@ -13,9 +48,7 @@ const ContactInfo = () => {
           </div>
           <div>
             <p className="text-gray-400 text-sm">Email</p>
-            <a href="mailto:contact@mariosavi.com" className="text-white hover:text-blue-accent transition-colors">
-              contact@mariosavi.com
-            </a>
+            {getEmailDisplay()}
           </div>
         </div>
         
