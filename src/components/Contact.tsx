@@ -1,6 +1,7 @@
 
 import ContactInfo from "./contact/ContactInfo";
-import ContactForm from "./contact/ContactForm";
+// Importing ContactForm but it will be commented out in the JSX
+// import ContactForm from "./contact/ContactForm";
 
 const Contact = () => {
   return (
@@ -21,14 +22,15 @@ const Contact = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Contact Information */}
-          <div className="lg:col-span-1 reveal-on-scroll">
+          <div className="lg:col-span-3 mx-auto max-w-xl reveal-on-scroll">
             <ContactInfo />
           </div>
           
-          {/* Contact Form */}
+          {/* Contact Form - Commented out as requested
           <div className="lg:col-span-2 reveal-on-scroll">
             <ContactForm />
           </div>
+          */}
         </div>
       </div>
     </section>
