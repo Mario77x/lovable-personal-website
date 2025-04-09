@@ -1,4 +1,3 @@
-
 import { ArrowDown } from "lucide-react";
 import { scrollTo } from "@/utils/scrollTo";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -22,7 +21,7 @@ const Hero = () => {
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight reveal-on-scroll">
             <span className="text-white">Mario Savi</span>
-            <span className="block mt-2 text-gradient my-0 text-3xl sm:text-4xl md:text-5xl font-bold">Driving Product Excellence</span>
+            <span className="block mt-2 text-gradient my-0 text-3xl sm:text-4xl md:text-5xl font-bold">Building products with passion.</span>
           </h1>
           
           <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto reveal-on-scroll text-balance">
