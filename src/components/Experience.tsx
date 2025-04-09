@@ -18,6 +18,7 @@ const Experience = () => {
       period: "September 2022 - Present",
       description: [
         "Leading product discovery, strategy, and roadmap to drive innovation in alignment with business goals.",
+        "Driving discovery and adoption of AI solutions to both increase internal productivity and resolve user pain points.",
         "Product lifecycle management through user, customer and market research.",
         "Contributing to the opening of new markets in Europe and North America.",
         "Driving success and revenue growth through innovation impacting platform adoption and customer retention.",
