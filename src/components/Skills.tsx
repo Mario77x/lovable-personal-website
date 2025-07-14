@@ -11,7 +11,8 @@ import {
   Clock,
   Presentation,
   Globe,
-  Search
+  Search,
+  Ribbon
 } from "lucide-react";
 
 interface Skill {
@@ -43,7 +44,7 @@ const Skills = () => {
         },
         {
           name: "Product Vision",
-          icon: <Lightbulb className="h-8 w-8 text-blue-accent" />,
+          icon: <Ribbon className="h-8 w-8 text-blue-accent" />,
           description: "Creating and communicating compelling product visions"
         }
       ]
