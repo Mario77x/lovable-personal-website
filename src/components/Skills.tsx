@@ -1,4 +1,3 @@
-
 import { 
   LineChart, 
   Users, 
@@ -9,7 +8,6 @@ import {
   MessageSquare, 
   BrainCircuit,
   Award,
-  Presentation,
   Globe,
   Search
 } from "lucide-react";
@@ -68,7 +66,7 @@ const Skills = () => {
         },
         {
           name: "People Management",
-          icon: <Presentation className="h-8 w-8 text-blue-accent" />,
+          icon: <Users className="h-8 w-8 text-blue-accent" />,
           description: "Hiring and mentoring Product Managers for success"
         }
       ]
