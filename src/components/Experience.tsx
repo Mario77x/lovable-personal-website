@@ -17,14 +17,13 @@ const Experience = () => {
       location: "Gießen, Hessen (DE) - Remote",
       period: "September 2022 - Present",
       description: [
-        "Leading product discovery, strategy, and roadmap to drive innovation in alignment with business goals.",
-        "Driving discovery and adoption of AI solutions to both increase internal productivity and resolve user pain points.",
-        "Product lifecycle management through user, customer and market research.",
-        "Contributing to the opening of new markets in Europe and North America.",
+        "Leading strategy for an AdTech enterprise platform.",
+        "Reducing user pain points and manual workload, focusing sharply on improving UX/UI.",
         "Driving success and revenue growth through innovation impacting platform adoption and customer retention.",
-        "Contributing to Department-wide initiatives as part of the Tech Department Leadership Team, working closely with CTO and VP of Engineering.",
-        "Driving process improvements helping F11 scale up in a sustainable manner.",
-        "Driving cross-functional coordination with C-level stakeholders and General Managers across the company."
+        "Contributing to the opening of new markets in Europe and North America.",
+        "Leading a tribe of several teams (including a Platform team) managing two Senior Product Managers as direct reports.",
+        "Helped scaling up the Tech Department by introducing product best practices such as continuous discovery and user research, and overall operations improvements.",
+        "Driving cross-functional collaboration with C-level and other stakeholders across the business to achieve company goals."
       ]
     },
     {
@@ -33,12 +32,9 @@ const Experience = () => {
       location: "The Hague (NL) - Hybrid",
       period: "February 2022 - August 2022",
       description: [
-        "Leading product strategy, vision and roadmap.",
-        "Leading two cross-functional teams.",
-        "Helping adopt Agile methodologies and optimizing operational processes.",
-        "Leading Product lifecycle management through user, customer and market research.",
-        "Responsible for general backlog management.",
-        "Driving stakeholder alignment across different teams and departments."
+        "Led strategy for a suite of two SaaS products in the intersection of insurance and legal domains.",
+        "Contributed to the launch of an API product in a highly regulated industry.",
+        "Managed two teams and helped scale up processes and operations, implementing Agile methodologies and best practices."
       ]
     },
     {
@@ -47,14 +43,10 @@ const Experience = () => {
       location: "Amsterdam (NL) - Hybrid",
       period: "January 2020 - December 2021",
       description: [
-        "Leading product strategy, roadmap and vision.",
-        "Driving the development of improvements and new features, from ideation to release.",
-        "Responsible for the general backlog management.",
-        "Helping launch a new family of office products (the \"Virtual Office\", as a response to a drop in revenue due to the Covid-19 pandemics).",
-        "Leading CR optimisation and A/B testing efforts (Google Optimize and GTM).",
-        "Data analysis and user research (Google Analytics and Hotjar).",
-        "Coordinating content production and localisation.",
-        "Stakeholder management across several teams and departments."
+        "Managed an e-commerce platform offering more than 400 coworking and office space locations worldwide in more than 30 languages.",
+        "Led the CRO strategy, focusing on A/B testing and overall content and UI consistency.",
+        "Increased inquiry rates (conversion) by ~20% during the Covid pandemic.",
+        "Helped launch a new family of products as a response to a drop in revenue due to the Covid-19 pandemics."
       ]
     },
     {
@@ -63,19 +55,18 @@ const Experience = () => {
       location: "Amsterdam (NL) - Hybrid",
       period: "November 2018 - December 2019",
       description: [
-        "Provided strategic advice to large Enterprise accounts across Europe and Asia to optimize customer experience and increase satisfaction.",
-        "Collaborated closely with Account Managers in managing the customer base.",
-        "Managed a remote support team, ensuring timely and effective resolution of customer issues.",
+        "Managed the customer base across EMEA for an event engagement mobile app product, providing strategic to optimize customer experience and increase satisfaction.",
+        "Managed a Support team, ensuring timely and effective resolution of customer issues.",
         "Collaborated with cross-functional teams to enhance product features and drive customer success."
       ]
     },
     {
-      title: "Customer Success Specialist / Scrum Master",
+      title: "Customer Success Specialist",
       company: "Tapfiliate.com",
       location: "Amsterdam (NL) - Hybrid",
       period: "January 2018 - October 2018",
       description: [
-        "Provided technical B2B support to integrate the SaaS affiliate platform with clients' e-commerce solutions and payment gateways.",
+        "Provided technical B2B support to integrate a SaaS affiliate marketing platform with e-commerce solutions and payment gateways.",
         "Facilitated adoption of Agile methodologies to streamline product management.",
         "Collaborated with a cross-functional team to ensure product optimization."
       ]
@@ -86,12 +77,9 @@ const Experience = () => {
       location: "Amsterdam (NL) - Hybrid",
       period: "August 2015 - July 2017",
       description: [
-        "Contributed to the prototyping and launch of new products in desktop and mobile.",
-        "Contributed to the prototyping of new products and features.",
-        "Proposed incremental improvements and A/B tests through hypotheses-based user stories.",
-        "Provided data and analysis from various sources, including database querying and live usability research moderation.",
-        "Coordinated tasks with international teams to drive product enhancements and feature updates at Booking.com.",
-        "Coordinated the production and localisation of content."
+        "Contributed to the prototyping and launch of new products and features in desktop and mobile.",
+        "Ran incremental improvements and A/B tests through hypotheses-based user stories.",
+        "Provided data and analysis from various sources, including SQL querying, surveys, and user interviews."
       ]
     },
     {
@@ -100,10 +88,9 @@ const Experience = () => {
       location: "Amsterdam (NL) - Hybrid",
       period: "December 2013 - July 2015",
       description: [
-        "Managed projects aimed to produce content for A/B tests and new products.",
-        "Collaborated closely with different Product teams in order to fulfill their content requirements.",
-        "Collaborated in several feature and product launches.",
-        "Managed individual project contributors located worldwide to ensure successful delivery."
+        "Managed content projects for A/B tests, new features, and product launches, closely collaborating with different Product teams.",
+        "Directly contributed to feature and product launches.",
+        "Managed project contributors worldwide."
       ]
     },
     {
@@ -112,7 +99,7 @@ const Experience = () => {
       location: "Amsterdam (NL) - Hybrid",
       period: "June 2011 - December 2013",
       description: [
-        "Worked closely with Product teams producing (copywriting), curating (text, photo, USG, meta-data) and managing all kinds of content for A/B tests and new products and features.",
+        "Produced and curated different types of content for different purposes, including A/B tests and new products and features, working closely with Product teams.",
         "Collaborated in several feature and product launches."
       ]
     }
