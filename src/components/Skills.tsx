@@ -1,4 +1,3 @@
-
 import { 
   LineChart, 
   Users, 
@@ -11,7 +10,8 @@ import {
   Award,
   Globe,
   Search,
-  UserCog
+  UserCog,
+  Code
 } from "lucide-react";
 
 interface Skill {
@@ -88,7 +88,7 @@ const Skills = () => {
         },
         {
           name: "Technical Expertise",
-          icon: <LineChart className="h-8 w-8 text-blue-accent" />,
+          icon: <Code className="h-8 w-8 text-blue-accent" />,
           description: "Leveraging technical knowledge to create sustainable product strategies"
         },
         {
