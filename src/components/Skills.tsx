@@ -1,3 +1,4 @@
+
 import { 
   LineChart, 
   Users, 
@@ -9,7 +10,8 @@ import {
   BrainCircuit,
   Award,
   Globe,
-  Search
+  Search,
+  UserCog
 } from "lucide-react";
 
 interface Skill {
@@ -66,7 +68,7 @@ const Skills = () => {
         },
         {
           name: "People Management",
-          icon: <Users className="h-8 w-8 text-blue-accent" />,
+          icon: <UserCog className="h-8 w-8 text-blue-accent" />,
           description: "Hiring and mentoring Product Managers for success"
         }
       ]
