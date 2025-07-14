@@ -22,7 +22,7 @@ const Experience = () => {
         "Driving success and revenue growth through innovation impacting platform adoption and customer retention.",
         "Contributing to the opening of new markets in Europe and North America.",
         "Leading a tribe of several teams (including a Platform team) managing two Senior Product Managers as direct reports.",
-        "Helped scaling up the Tech Department by introducing product best practices such as continuous discovery and user research, and overall operations improvements.",
+        "Helping scale up the Tech Department by introducing product best practices such as continuous discovery and user research, and overall operations improvements.",
         "Driving cross-functional collaboration with C-level and other stakeholders across the business to achieve company goals."
       ]
     },
