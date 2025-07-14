@@ -62,14 +62,14 @@ const Skills = () => {
           description: "Building consensus among diverse stakeholders"
         },
         {
-          name: "Agile Methodologies",
+          name: "Scaling product and teams",
           icon: <Clock className="h-8 w-8 text-blue-accent" />,
-          description: "Implementing and optimizing agile product development"
+          description: "Implementing tailored product and operational improvements"
         },
         {
           name: "People Management",
           icon: <Presentation className="h-8 w-8 text-blue-accent" />,
-          description: "Helping other product managers grow and further their career paths"
+          description: "Hirng and mentoring product managers for success"
         }
       ]
     },
