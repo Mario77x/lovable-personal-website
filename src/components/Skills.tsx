@@ -1,3 +1,4 @@
+
 import { 
   LineChart, 
   Users, 
@@ -7,7 +8,7 @@ import {
   BarChart4, 
   MessageSquare, 
   BrainCircuit,
-  Clock,
+  Award,
   Presentation,
   Globe,
   Search
@@ -62,7 +63,7 @@ const Skills = () => {
         },
         {
           name: "Operational Excellence",
-          icon: <Clock className="h-8 w-8 text-blue-accent" />,
+          icon: <Award className="h-8 w-8 text-blue-accent" />,
           description: "Implementing tailored product and process improvements"
         },
         {
