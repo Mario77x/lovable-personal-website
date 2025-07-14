@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
 const About = () => {
   // Key points about Mario Savi
-  const keyPoints = ["12+ years of experience in product management and digital transformation", "Expert in strategic product development and team leadership", "Strong track record in optimizing product lifecycles and revenue growth", "Experienced in bridging technical and business stakeholders", "Passionate about creating exceptional user experiences"];
+  const keyPoints = ["14+ years of experience in digital transformation and product management", "Expert in strategic product development and team leadership", "Strong track record in optimizing product lifecycles and revenue growth", "Experienced in bridging technical and business stakeholders", "Passionate about creating exceptional user experiences"];
   return <section id="about" className="py-20 relative">
       {/* Background accent */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-accent/5 blur-[120px] rounded-full -z-10" />
