@@ -77,24 +77,24 @@ const Skills = () => {
       title: "Technical Skills",
       skills: [
         {
-          name: "Analytics & Metrics",
+          name: "Data Analysis",
           icon: <BarChart4 className="h-8 w-8 text-blue-accent" />,
-          description: "Defining and tracking KPIs to measure success and drive decisions"
+          description: "Defining KPIs and using SQL and other tools to track success"
         },
         {
-          name: "Growth Strategies",
+          name: "Rapid Iteration",
           icon: <TrendingUp className="h-8 w-8 text-blue-accent" />,
-          description: "Implementing strategies tailored to the unique aspects of each product"
+          description: "Using A/B testing and AI tools for rapid validation and prototyping"
         },
         {
-          name: "Technical Expertise",
+          name: "Technical Acumen",
           icon: <Code className="h-8 w-8 text-blue-accent" />,
-          description: "Leveraging technical knowledge to create sustainable product strategies"
+          description: "Leveraging technical knowledge to implement realistic solutions"
         },
         {
           name: "User Research",
           icon: <Search className="h-8 w-8 text-blue-accent" />,
-          description: "Conducting research to understand user needs and behaviors"
+          description: "Conducting user interviews to validate solutions and gather feedback"
         }
       ]
     }
