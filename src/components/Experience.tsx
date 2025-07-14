@@ -34,7 +34,7 @@ const Experience = () => {
       description: [
         "Led strategy for a suite of two SaaS products in the intersection of insurance and legal domains.",
         "Contributed to the launch of an API product in a highly regulated industry.",
-        "Managed two teams and helped scale up processes and operations, implementing Agile methodologies and best practices."
+        "Managed two teams and helped scale up operations, implementing Agile methodologies and best practices."
       ]
     },
     {
