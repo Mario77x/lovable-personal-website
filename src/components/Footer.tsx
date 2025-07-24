@@ -21,12 +21,9 @@ const Footer = () => {
             <div className="mb-4 md:mb-0">
               <p className="text-gradient py-0 my-0 font-semibold text-base text-left">Mario Savi. Helping companies scale and grow.</p>
             </div>
-            
             <div className="flex items-center md:items-end">
-              <p className="text-gray-400 text-sm text-right">
-                &copy; {currentYear} Mario Savi. All rights reserved.</p><br>
-              <p className="text-gray-400 text-sm text-right">
-                No cookies are used in this website (yet!).</p>
+              <p className="text-gray-400 text-sm text-right">&copy; {currentYear} Mario Savi. All rights reserved.</p><br>
+              <p className="text-gray-400 text-sm text-right">No cookies are used in this website (yet!).</p>
             </div>
           </div>
         </div>
