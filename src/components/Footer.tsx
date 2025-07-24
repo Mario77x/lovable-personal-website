@@ -24,7 +24,8 @@ const Footer = () => {
             
             <div className="flex items-center md:items-end">
               <p className="text-gray-400 text-sm text-right">
-                &copy; {currentYear} Mario Savi. All rights reserved. Built with Lovable.
+                &copy; {currentYear} Mario Savi. All rights reserved. 
+                No cookies are used in this website (yet!).
               </p>
             </div>
           </div>
