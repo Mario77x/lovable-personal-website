@@ -15,7 +15,7 @@ const Experience = () => {
       title: "Group Product Manager",
       company: "Factor Eleven",
       location: "Gießen, Hessen (DE) - Remote",
-      period: "September 2022 - Present",
+      period: "September 2022 - September 2025",
       description: [
         "Leading strategy for an AdTech enterprise platform.",
         "Reducing user pain points and manual workload, focusing sharply on improving UX/UI.",
