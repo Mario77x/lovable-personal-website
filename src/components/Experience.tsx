@@ -17,13 +17,13 @@ const Experience = () => {
       location: "Gießen, Hessen (DE) - Remote",
       period: "September 2022 - September 2025",
       description: [
-        "Leading strategy for an AdTech enterprise platform.",
-        "Reducing user pain points and manual workload, focusing sharply on improving UX/UI.",
-        "Driving success and revenue growth through innovation impacting platform adoption and customer retention.",
-        "Contributing to the opening of new markets in Europe and North America.",
-        "Leading a tribe of several teams (including a Platform team) managing two Senior Product Managers as direct reports.",
-        "Helping scale up the Tech Department by introducing product best practices such as continuous discovery and user research, and overall operational improvements.",
-        "Driving cross-functional collaboration with C-level and other stakeholders across the business to achieve company goals.",
+        "Led strategy for an AdTech enterprise platform.",
+        "Reduced user pain points and manual workload, focusing sharply on improving UX/UI.",
+        "Drove success and revenue growth through innovation impacting platform adoption and customer retention.",
+        "Contributed to the opening of new markets in Europe and North America.",
+        "Led a tribe of several teams (including a Platform team) managing two Senior Product Managers as direct reports.",
+        "Helped scale up the Tech Department by introducing product best practices such as continuous discovery and user research, and overall operational improvements.",
+        "Drove cross-functional collaboration with C-level and other stakeholders across the business to achieve company goals.",
         "Kickstarted use of AI tools such as Lovable for rapid prototyping."
       ]
     },
