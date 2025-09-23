@@ -2,6 +2,7 @@
 import MainLayout from "@/layouts/MainLayout";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import InANutshell from "@/components/InANutshell";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
@@ -32,6 +33,7 @@ const Index = () => {
       </Helmet>
       <Hero />
       <About />
+      <InANutshell />
       <Experience />
       <Skills />
       <Contact />
