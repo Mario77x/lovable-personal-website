@@ -17,14 +17,17 @@ const Experience = () => {
       location: "Gießen, Hessen (DE) - Remote",
       period: "September 2022 - September 2025",
       description: [
-        "Led strategy for an AdTech enterprise platform.",
-        "Reduced user pain points and manual workload, focusing sharply on improving UX/UI.",
-        "Drove success and revenue growth through innovation impacting platform adoption and customer retention.",
+        "Led strategy for the main workflows of an AdTech enterprise platform.",
+        "Reduced user pain points and manual workload (main KPI = Campaign creation lead time) and increased user satisfaction, focusing sharply on UX/UI workflow improvements,architectural redesign (multi-tenancy), performance improvements, and reduction of tech debt.",
+        "Drove revenue growth through innovation impacting customer onboarding, platform adoption, and customer retention.",
         "Contributed to the opening of new markets in Europe and North America.",
-        "Led a tribe of several teams (including a Platform team) managing two Senior Product Managers as direct reports.",
-        "Helped scale up the Tech Department by introducing product best practices such as continuous discovery and user research, and overall operational improvements.",
-        "Drove cross-functional collaboration with C-level and other stakeholders across the business to achieve company goals.",
-        "Kickstarted use of AI tools such as Lovable for rapid prototyping."
+        "Implemented continuous discovery practices through regular user feedback cycles, adoption of a data-driven mindset, and strong collaboration with the Lead Designer and Lead Engineer.",
+        "Contributed to scale up and advance operational excellence in the Tech Department through common sense and best practices, such as simplifying documentation and Jira workflows, setting up clear agendas for meetings, etc.",
+        "Improved cross-functional alignment with C-level to drive company growth",
+        "Learnt to use Datadog for overall product observability, leading adoption of product data for decision making and success measuring.",
+        "Improved communication and reduced frustration with stakeholders across the organization by proactively opening channels, listening to their concerns, and adapting communication to their styles and needs.",
+        "Pioneered use of AI tools such as LLMs and vibe-coding for research and rapid prototyping.",
+        "Together with other Group PM, we coached and helped empower a team of 4 Senior PMs, helping move the needle towards a modern product operating model."
       ]
     },
     {
@@ -33,9 +36,15 @@ const Experience = () => {
       location: "The Hague (NL) - Hybrid",
       period: "February 2022 - August 2022",
       description: [
-        "Led strategy for a suite of two SaaS products in the intersection of insurance and legal domains.",
-        "Contributed to the launch of an API product in a highly regulated industry.",
-        "Managed two teams and helped scale up operations, implementing Agile methodologies and best practices."
+        "Led strategy for a suite of products in the intersection of employment insurance and payslip management.",
+        "I managed a SaaS platform and contributed to the launch of an API product (adjacent but 0-to-1) in a highly regulated industry.",
+        "Led product strategy, vision and roadmap, working with two cross-functional teams.",
+        "Helped adopt Agile methodologies and bring the organization closer to a modern product operating model.",
+        "Helped optimize basic operational processes to increase clarity and efficiency.",
+        "Reduced frustration and increased trust from stakeholders by implementing proactive communication strategies and listening to their concerns.",
+        "Incorporated modern lifecycle management practices, bringing market and user research as a vital tool to drive decisions.",
+        "Successfully empowered a Project Manager to take on the Product Management role."
+        
       ]
     },
     {
@@ -45,9 +54,14 @@ const Experience = () => {
       period: "January 2020 - December 2021",
       description: [
         "Managed an e-commerce platform offering more than 400 coworking and office space locations worldwide in more than 30 languages.",
-        "Led the CRO strategy, focusing on A/B testing and overall content and UI consistency.",
+        "Led product strategy, roadmap and vision.",
+        "Led growth strategies though CRO, focusing on A/B testing and overall content and UI improvements.",
         "Increased inquiry rates (conversion) by ~20% during the Covid pandemic.",
-        "Helped launch a new family of products as a response to a drop in revenue due to the Covid-19 pandemics."
+        "Helped launch a new family of products as a response to a drop in revenue due to the Covid-19 pandemics.",
+        "Drove the development of improvements and new features, from ideation to rollout.",
+        "My day to day included data analysis and user research (Google Analytics and Hotjar - particularly the “session recordings” as a proxy of user interviews).",
+        "Coordinated content production and localisation.",
+        "Managed stakeholders across several teams and departments, from individual coworking building managers to directors at the parent company IWG plc."
       ]
     },
     {
@@ -56,8 +70,9 @@ const Experience = () => {
       location: "Amsterdam (NL) - Hybrid",
       period: "November 2018 - December 2019",
       description: [
-        "Managed the customer base across EMEA for an event engagement mobile app product, providing strategic to optimize customer experience and increase satisfaction.",
-        "Managed a Support team, ensuring timely and effective resolution of customer issues.",
+        "Provided strategic advice to large Enterprise accounts across Europe and Asia to optimize customer experience and increase satisfaction.",
+        "Collaborated closely with Account Managers in managing the customer base, often visiting customers’ offices around Europe.",
+        "Managed a remote Support team, ensuring timely and effective resolution of customer issues.",
         "Collaborated with cross-functional teams to enhance product features and drive customer success."
       ]
     },
@@ -78,9 +93,11 @@ const Experience = () => {
       location: "Amsterdam (NL) - Hybrid",
       period: "August 2015 - July 2017",
       description: [
-        "Contributed to the prototyping and launch of new products and features in desktop and mobile.",
-        "Ran incremental improvements and A/B tests through hypotheses-based user stories.",
-        "Provided data and analysis from various sources, including SQL querying, surveys, and user interviews."
+        "Contributed to the prototyping and launch of new products in desktop and mobile.",
+        "Proposed incremental improvements and A/B tests through hypotheses-based user stories, increasing conversion and engagement metrics.",
+        "Provided data and analysis from various sources, including database querying, online surveys, and live usability research moderation.",
+        "Successfully coordinated dozens of projects with teams around the world to drive product enhancements and feature updates.",
+        "Coordinated the production and localisation of content."
       ]
     },
     {
@@ -89,9 +106,10 @@ const Experience = () => {
       location: "Amsterdam (NL) - Hybrid",
       period: "December 2013 - July 2015",
       description: [
-        "Managed content projects for A/B tests, new features, and product launches, closely collaborating with different Product teams.",
-        "Directly contributed to feature and product launches.",
-        "Managed project contributors worldwide."
+        "Managed projects aimed to produce content for A/B tests and new products.",
+        "Collaborated closely with different Product teams in order to fulfill their content requirements.",
+        "Collaborated in dozens of feature and product launches, including 0-to-1 products (some of them already retired, such as the attempt to build a competitor for AirBnB and other non-hotel rentals called villas.com).",
+        "Managed individual project contributors located worldwide to ensure successful delivery."
       ]
     },
     {
@@ -100,7 +118,7 @@ const Experience = () => {
       location: "Amsterdam (NL) - Hybrid",
       period: "June 2011 - December 2013",
       description: [
-        "Produced and curated different types of content for different purposes, including A/B tests and new products and features, working closely with Product teams.",
+        "Worked closely with Product teams producing (copywriting), curating (text, photo, USG, meta-data) and managing all kinds of content for A/B tests and new products and features.",
         "Collaborated in several feature and product launches."
       ]
     }
