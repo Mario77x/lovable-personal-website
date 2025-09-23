@@ -30,9 +30,10 @@ const InANutshell = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-blue-accent/5 to-transparent blur-3xl" />
       
       <div className="relative max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">
-          In a nutshell
+        <h2 className="text-3xl md:text-4xl font-bold mb-2 text-gradient">
+          In a Nutshell
         </h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-blue-light to-blue-accent mx-auto mb-4 rounded-full" />
         <p className="text-lg text-gray-300 mb-12 leading-relaxed">
           A snapshot of my journey and expertise
         </p>
@@ -85,7 +86,7 @@ const InANutshell = () => {
             <li>• This MVP portfolio website you are currently visiting</li>
           </ul>
           <a
-            href="https://github.com"
+            href="https://github.com/Mario77x"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-6 py-2 bg-blue-accent hover:bg-blue-light transition-colors duration-200 text-white rounded-lg font-medium"
