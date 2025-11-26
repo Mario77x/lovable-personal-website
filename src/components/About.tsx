@@ -43,9 +43,9 @@ const About = () => {
             <h3 className="text-2xl md:text-3xl font-bold">Product leadership for the new chapter of your company.</h3>
 
             <p className="text-gray-300 text-balance">
-              I'm a strategic product leader with extensive experience in driving product excellence and digital
-              transformation. I specialize in helping companies apply industry standards adapted to the specific reality
-              and culture of each product and team.
+              I'm a strategic product leader with extensive experience in driving product excellence. I specialize in
+              helping companies apply industry standards adapted to the specific reality and culture of each product and
+              team.
             </p>
 
             <p className="text-gray-300 text-balance">
