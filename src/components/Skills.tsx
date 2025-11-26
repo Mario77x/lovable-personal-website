@@ -4,7 +4,7 @@ import {
   Lightbulb,
   TrendingUp,
   Target,
-  BarChart4,
+  Bot,
   MessageSquare,
   BrainCircuit,
   Award,
@@ -78,7 +78,7 @@ const Skills = () => {
       skills: [
         {
           name: "AI Integration",
-          icon: <BarChart4 className="h-8 w-8 text-blue-accent" />,
+          icon: <Bot className="h-8 w-8 text-blue-accent" />,
           description: "Assessing and integrating AI-enhanced experiences to solve user needs",
         },
         {
