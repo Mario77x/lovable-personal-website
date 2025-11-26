@@ -74,7 +74,7 @@ const Skills = () => {
       ],
     },
     {
-      title: "Technical Skills",
+      title: "Technical & Research Skills",
       skills: [
         {
           name: "AI Integration",
