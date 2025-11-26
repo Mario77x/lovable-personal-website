@@ -1,17 +1,17 @@
-import { 
-  LineChart, 
-  Users, 
-  Lightbulb, 
-  TrendingUp, 
-  Target, 
-  BarChart4, 
-  MessageSquare, 
+import {
+  LineChart,
+  Users,
+  Lightbulb,
+  TrendingUp,
+  Target,
+  BarChart4,
+  MessageSquare,
   BrainCircuit,
   Award,
   Globe,
   Search,
   UserCog,
-  Code
+  Code,
 } from "lucide-react";
 
 interface Skill {
@@ -29,24 +29,24 @@ const Skills = () => {
         {
           name: "Product Strategy",
           icon: <Target className="h-8 w-8 text-blue-accent" />,
-          description: "Developing comprehensive product strategies aligned with business goals"
+          description: "Developing comprehensive product strategies aligned with business goals",
         },
         {
           name: "Market Analysis",
           icon: <Globe className="h-8 w-8 text-blue-accent" />,
-          description: "Evaluating market trends, competition, and opportunities"
+          description: "Evaluating market trends, competition, and opportunities",
         },
         {
           name: "Business Intelligence",
           icon: <BrainCircuit className="h-8 w-8 text-blue-accent" />,
-          description: "Leveraging data to inform strategic decision-making"
+          description: "Leveraging data to inform strategic decision-making",
         },
         {
           name: "Product Vision",
           icon: <Lightbulb className="h-8 w-8 text-blue-accent" />,
-          description: "Creating and communicating compelling product visions"
-        }
-      ]
+          description: "Creating and communicating compelling product visions",
+        },
+      ],
     },
     {
       title: "Leadership Skills",
@@ -54,57 +54,57 @@ const Skills = () => {
         {
           name: "Team Leadership",
           icon: <Users className="h-8 w-8 text-blue-accent" />,
-          description: "Leading cross-functional teams to achieve product goals"
+          description: "Leading cross-functional teams to achieve product goals",
         },
         {
           name: "Stakeholder Management",
           icon: <MessageSquare className="h-8 w-8 text-blue-accent" />,
-          description: "Building consensus among diverse stakeholders"
+          description: "Building consensus among diverse stakeholders",
         },
         {
           name: "Operational Excellence",
           icon: <Award className="h-8 w-8 text-blue-accent" />,
-          description: "Implementing tailored product and process improvements"
+          description: "Implementing tailored product and process improvements",
         },
         {
           name: "People Management",
           icon: <UserCog className="h-8 w-8 text-blue-accent" />,
-          description: "Hiring and mentoring Product Managers for success"
-        }
-      ]
+          description: "Hiring and mentoring Product Managers for success",
+        },
+      ],
     },
     {
       title: "Technical Skills",
       skills: [
         {
-          name: "Data Analysis",
+          name: "AI Integration",
           icon: <BarChart4 className="h-8 w-8 text-blue-accent" />,
-          description: "Defining KPIs and using SQL and other tools to track success"
+          description: "Assessing and integrating AI-enhanced experiences to solve user needs",
         },
         {
           name: "Rapid Iteration",
           icon: <TrendingUp className="h-8 w-8 text-blue-accent" />,
-          description: "Using A/B testing and AI tools for rapid validation and prototyping"
+          description: "Using A/B testing and AI tools for rapid validation and prototyping",
         },
         {
           name: "Technical Acumen",
           icon: <Code className="h-8 w-8 text-blue-accent" />,
-          description: "Leveraging technical knowledge to implement realistic solutions"
+          description: "Leveraging technical knowledge to implement realistic solutions",
         },
         {
-          name: "User Research",
+          name: "Continuous Discovery",
           icon: <Search className="h-8 w-8 text-blue-accent" />,
-          description: "Conducting user interviews to validate solutions and gather feedback"
-        }
-      ]
-    }
+          description: "Driving improvement and growth through user research and data analysis",
+        },
+      ],
+    },
   ];
 
   return (
     <section id="skills" className="py-20 relative">
       {/* Background accent */}
       <div className="absolute top-1/2 right-0 w-1/3 h-1/3 bg-blue-accent/5 blur-[120px] rounded-full -z-10" />
-      
+
       <div className="section-container">
         <div className="text-center mb-16 reveal-on-scroll">
           <h2 className="text-3xl md:text-4xl font-bold">
@@ -112,17 +112,15 @@ const Skills = () => {
           </h2>
           <div className="mt-2 h-1 w-20 bg-gradient-blue mx-auto rounded-full"></div>
         </div>
-        
+
         <div className="space-y-16">
           {skillCategories.map((category, categoryIndex) => (
             <div key={categoryIndex} className="reveal-on-scroll">
-              <h3 className="text-2xl font-bold mb-8 text-center">
-                {category.title}
-              </h3>
-              
+              <h3 className="text-2xl font-bold mb-8 text-center">{category.title}</h3>
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {category.skills.map((skill, skillIndex) => (
-                  <div 
+                  <div
                     key={skillIndex}
                     className="glass-card p-6 rounded-lg transition-all duration-300 hover:shadow-blue-glow group"
                   >
@@ -130,14 +128,10 @@ const Skills = () => {
                       <div className="p-3 rounded-full bg-dark-surface/80 group-hover:bg-blue-accent/10 transition-colors duration-300">
                         {skill.icon}
                       </div>
-                      
-                      <h4 className="text-xl font-semibold text-white">
-                        {skill.name}
-                      </h4>
-                      
-                      <p className="text-gray-400 text-sm">
-                        {skill.description}
-                      </p>
+
+                      <h4 className="text-xl font-semibold text-white">{skill.name}</h4>
+
+                      <p className="text-gray-400 text-sm">{skill.description}</p>
                     </div>
                   </div>
                 ))}
