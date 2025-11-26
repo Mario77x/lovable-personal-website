@@ -77,17 +77,6 @@ const Experience = () => {
       ]
     },
     {
-      title: "Customer Success Specialist",
-      company: "Tapfiliate.com",
-      location: "Amsterdam (NL) - Hybrid",
-      period: "January 2018 - October 2018",
-      description: [
-        "Provided technical B2B support to integrate a SaaS affiliate marketing platform with e-commerce solutions and payment gateways.",
-        "Facilitated adoption of Agile methodologies to streamline product management.",
-        "Collaborated with a cross-functional team to ensure product optimization."
-      ]
-    },
-    {
       title: "Junior Product Owner",
       company: "Booking.com",
       location: "Amsterdam (NL) - Hybrid",
