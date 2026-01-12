@@ -31,8 +31,7 @@ const About = () => {
           <div className="space-y-6 reveal-on-scroll">
             <h3 className="text-2xl md:text-3xl font-bold">Product leadership for the next chapter of your company.</h3>
 
-            <p className="text-gray-300 text-balance">I'm a product leader with deep technical understanding and extensive experience driving growth in both SaaS and E-commerce products.  
-     </p>
+            <p className="text-gray-300 text-balance">I'm a product leader with deep technical knowledge and extensive experience driving growth in both SaaS and E-commerce products.</p>
 
             <p className="text-gray-300 text-balance">
               Throughout my career, I've successfully led cross-functional teams and managed product lifecycles,
