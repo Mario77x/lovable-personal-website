@@ -99,6 +99,33 @@ const Experience = () => {
         "Produced, curated and delivered uncountable pieces of content (copy, photos, user generated content) aimed at A/B testing new features and products that drove both learnings and conversion increases, collaborating with product teams in several launches.",
       ],
     },
+    {
+      title: "Receptionist",
+      company: "Different Hotels",
+      location: "Italy",
+      period: "2008 - 2010",
+      description: [
+        "Provided front desk services and guest support at various hotel properties in Italy.",
+      ],
+    },
+    {
+      title: "Policy Advisor and Project Coordinator",
+      company: "Local Administration of Rosario",
+      location: "Argentina",
+      period: "2005 - 2007",
+      description: [
+        "Advised on policy matters and coordinated projects for local government administration.",
+      ],
+    },
+    {
+      title: "Administrative Assistant",
+      company: "National University of Rosario",
+      location: "Argentina",
+      period: "2004 - 2006",
+      description: [
+        "Provided administrative support at the university.",
+      ],
+    },
   ];
 
   return (
