@@ -104,7 +104,7 @@ const Experience = () => {
       location: "Italy",
       period: "2008 - 2010",
       description: [
-        "Provided front desk services and guest support at various hotel properties in Italy as a bridging experience between my move from Argentina to Europe.",
+        "Provided front desk services and guest support at various hotel properties in Italy as a bridging experience when I moved from Argentina to Europe.",
       ],
     },
     {
