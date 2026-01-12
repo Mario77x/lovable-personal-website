@@ -1,4 +1,3 @@
-
 import MainLayout from "@/layouts/MainLayout";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -20,16 +19,16 @@ const Index = () => {
     <MainLayout>
       <Helmet>
         <title>Mario Savi | Product leadership</title>
-        <meta name="description" content="Passionate about product" />
-        <meta property="og:title" content="Mario Savi | Product Leader" />
-        <meta property="og:description" content="Passionate about product" />
+        <meta name="description" content="Passionate about product growth" />
+        <meta property="og:title" content="Mario Savi | Product leader" />
+        <meta property="og:description" content="Passionate about product growth" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Mario Savi | Product Leader" />
-        <meta name="twitter:description" content="Passionate about product" />
+        <meta name="twitter:title" content="Mario Savi | Product leader" />
+        <meta name="twitter:description" content="Passionate about product growth" />
       </Helmet>
       <Hero />
       <About />
