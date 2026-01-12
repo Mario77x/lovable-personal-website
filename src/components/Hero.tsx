@@ -24,8 +24,7 @@ const Hero = () => {
             <span className="block mt-2 text-gradient my-0 text-3xl sm:text-4xl md:text-5xl font-bold">Product leader helping companies scale and grow.</span>
           </h1>
           
-          <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto reveal-on-scroll text-balance">Product leader with a track record of driving revenue growth and scaling product and operations.
-Passionate about building products that deliver exceptional value and experiences.</p>
+          <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto reveal-on-scroll text-balance">Product leader with a track record of driving revenue growth and scaling products and operations. Passionate about building products that deliver exceptional value and experiences.</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 reveal-on-scroll">
             <button onClick={() => scrollTo("contact")} className="px-8 py-3 bg-gradient-blue text-white font-medium rounded-lg transition-all duration-300 hover:shadow-blue-glow transform hover:-translate-y-1">
