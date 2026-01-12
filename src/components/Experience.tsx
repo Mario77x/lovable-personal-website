@@ -16,15 +16,15 @@ const Experience = () => {
       location: "Gießen (DE, Remote)",
       period: "September 2022 - August 2025",
       description: [
-        "Reduced user pain points and increased customer satisfaction, retention and revenue, leading strategy and execution for an enterprise AdTech SaaS platform, empowering a Tribe of three teams and two Senior PMs.",
-        "Reduced user pain points and manual workload in onboarding and main task completion, leading to increased user satisfaction, retention, and revenue, focusing sharply on UX/UI workflow improvements, architectural redesign (multi-tenancy, microservices), performance improvements, and reduction of tech debt.",
+        "Lead strategy and execution for an enterprise AdTech SaaS platform, empowering a Tribe of three teams and two Senior PMs.",
+        "Reduced user pain points and increased customer satisfaction, retention and revenue, focusing sharply on UX/UI workflow improvements, architectural redesign (multi-tenancy, microservices), performance improvements, and reduction of tech debt.",
         "Contributed to the successful opening of new markets in Europe.",
         "Implemented continuous discovery practices through regular user feedback cycles in collaboration with Design and Engineering.",
         "Implemented user telemetry using Datadog, crafting specific KPIs to measure success, shifting towards a modern data-driven and outcome-based product management culture.",
         "Contributed to advance operational excellence in the Tech Department through best practices such as updating documentation, simplifying Jira workflows, clarifying role expectations, improving release process together with DevOps, etc.",
         "Improved cross-functional alignment with C-level and company wide stakeholders to drive business growth and reduce friction, including organizing on-site strategy workshops.",
         "Pioneered use of AI tools such as LLMs and vibe-coding for research and rapid prototyping.",
-        "Identified and created a strategy to incorporate GenAI capabilities to tackle long standing user problems that classical approaches could not resolve, focusing on automation of tedious and repetitive manual tasks.",
+        "Crafted a strategy to incorporate GenAI capabilities to tackle long standing user problems that classical approaches could not resolve, focusing on automation of tedious and repetitive manual tasks.",
       ],
     },
     {
@@ -48,8 +48,8 @@ const Experience = () => {
       location: "Amsterdam (NL)",
       period: "January 2020 - December 2021",
       description: [
-        "Increased 20% conversion while managing the spacesworks.com e-commerce platform offering +400 coworking and office space locations worldwide in more than 30 languages.",
-        "Led growth strategies through CRO, A/B testing, and overall content and UI improvements and features, increasing conversion by ~20% during the Covid pandemic.",
+        "Increased ~20% conversion while managing the spacesworks.com e-commerce platform offering +400 coworking and office space locations worldwide in more than 30 languages.",
+        "Led growth strategies through CRO, A/B testing, and overall content and UI improvements.",
         "Led an external development team as the only in-house member, running workshops and prioritization ceremonies.",
         "Helped launch a new family of products as a response to a drop in revenue due to the Covid-19 pandemic.",
         "Coordinated content production and localisation at scale through internal teams.",
@@ -105,7 +105,7 @@ const Experience = () => {
       location: "Italy",
       period: "2008 - 2010",
       description: [
-        "Provided front desk services and guest support at various hotel properties in Italy.",
+        "Provided front desk services and guest support at various hotel properties in Italy as a bridging experience between my move from Argentina to Europe.",
       ],
     },
     {
@@ -114,7 +114,7 @@ const Experience = () => {
       location: "Argentina",
       period: "2005 - 2007",
       description: [
-        "Advised on policy matters and coordinated projects for local government administration.",
+        "Advised on policy matters, and in pararllel coordinated several projects in different areas of the local government administration, particularly focused on social, cultural, and democracy topics.",
       ],
     },
     {
@@ -123,7 +123,7 @@ const Experience = () => {
       location: "Argentina",
       period: "2004 - 2006",
       description: [
-        "Provided administrative support at the university.",
+        "Provided administrative support at the university, organizing events, and designing visual and graphic communication materials.",
       ],
     },
   ];
