@@ -1,15 +1,8 @@
 import { Check } from "lucide-react";
 const About = () => {
   // Key points about Mario Savi
-  const keyPoints = [
-    "14+ years working with digital products, 8 directly in product management",
-    "Expert in strategic product development and team leadership",
-    "Strong track record in optimizing product lifecycles and revenue growth",
-    "Experienced in bridging technical and business stakeholders",
-    "Passionate about creating exceptional user experiences",
-  ];
-  return (
-    <section id="about" className="py-20 relative">
+  const keyPoints = ["14+ years working with digital products, 8 directly in product management", "Expert in strategic product development and team leadership", "Strong track record in optimizing product lifecycles and revenue growth", "Experienced in bridging technical and business stakeholders", "Passionate about creating exceptional user experiences"];
+  return <section id="about" className="py-20 relative">
       {/* Background accent */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-accent/5 blur-[120px] rounded-full -z-10" />
 
@@ -27,11 +20,7 @@ const About = () => {
             <div className="relative">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden glass-card p-1">
                 <div className="w-full h-full rounded-full overflow-hidden">
-                  <img
-                    src="/lovable-uploads/5c29f974-6720-46cc-af28-4c8cd4b1f7a4.png"
-                    alt="Mario Savi"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src="/lovable-uploads/5c29f974-6720-46cc-af28-4c8cd4b1f7a4.png" alt="Mario Savi" className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="absolute -z-10 inset-0 blur-xl bg-blue-accent/20 rounded-full"></div>
@@ -42,11 +31,8 @@ const About = () => {
           <div className="space-y-6 reveal-on-scroll">
             <h3 className="text-2xl md:text-3xl font-bold">Product leadership for the next chapter of your company.</h3>
 
-            <p className="text-gray-300 text-balance">
-              I'm a strategic product leader with extensive experience in driving product excellence in both SaaS and
-              E-commerce. I specialize in helping companies apply best practices adapted to their specific culture,
-              product and team.
-            </p>
+            <p className="text-gray-300 text-balance">I'm a product leader with deep technical understanding and extensive experience driving growth in both SaaS and E-commerce products.  
+     </p>
 
             <p className="text-gray-300 text-balance">
               Throughout my career, I've successfully led cross-functional teams and managed product lifecycles,
@@ -54,19 +40,16 @@ const About = () => {
             </p>
 
             <ul className="space-y-3 mt-6">
-              {keyPoints.map((point, index) => (
-                <li key={index} className="flex items-start">
+              {keyPoints.map((point, index) => <li key={index} className="flex items-start">
                   <span className="flex-shrink-0 flex items-center justify-center h-6 w-6 rounded-full bg-blue-accent/20 text-blue-accent mr-3 mt-0.5">
                     <Check size={14} />
                   </span>
                   <span className="text-gray-300">{point}</span>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
 export default About;
