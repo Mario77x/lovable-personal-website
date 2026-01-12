@@ -20,6 +20,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center -mt-4">
             <div className="mb-4 md:mb-0">
               <p className="text-gradient py-0 my-0 font-semibold text-base text-left">Mario Savi. Helping companies scale and grow.</p>
+              <p className="text-gray-400 text-sm text-left mt-1">Inschrijving Kamer van Koophandel: 99390205</p>
             </div>
             
             <div className="flex items-center md:items-end">
