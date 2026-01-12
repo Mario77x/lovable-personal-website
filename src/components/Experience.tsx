@@ -113,7 +113,7 @@ const Experience = () => {
       location: "Argentina",
       period: "2005 - 2007",
       description: [
-        "Advised on policy matters, and in pararllel coordinated several projects in different areas of the local government administration, particularly focused on social, cultural, and democracy topics.",
+        "Drafted pieces of legislation at the office of a City Councilor, and in pararllel coordinated several projects in different areas of the local government administration, particularly focused on social, cultural, and democracy topics.",
       ],
     },
     {
