@@ -76,7 +76,6 @@ const Experience = () => {
         "Partially managed a product (desktop and mobile app) successfully impacting downloads, active users, opening rates, engagement, loyalty, and most importantly, conversion, all of it through hypothesis-based A/B tests.",
         "Was directly involved in product and feature launches working with two cross-functional teams (desktop and mobile apps).",
         "Learned the craft of user research, data analysis and market research using SQL, interviewing users in person, surveying targeted users online, testing products and features on site, collaborating closely with Data Analysts and other cross-functional team members.",
-        "Took part in discussions with different third-party partners and vendors.",
       ],
     },
     {
