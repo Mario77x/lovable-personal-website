@@ -21,7 +21,7 @@ const Hero = () => {
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight reveal-on-scroll">
             <span className="text-white">Mario Savi</span>
-            <span className="block mt-2 text-gradient my-0 text-3xl sm:text-4xl md:text-5xl font-bold">Product leader driving scale and growth.</span>
+            <span className="block mt-2 text-gradient my-0 text-3xl sm:text-4xl md:text-5xl font-bold">Product leader helping companies scale and grow.</span>
           </h1>
           
           <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto reveal-on-scroll text-balance">Product leader with a track record of driving revenue growth and scaling product and operations.
