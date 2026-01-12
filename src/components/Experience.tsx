@@ -16,7 +16,7 @@ const Experience = () => {
       location: "Gießen (DE, Remote)",
       period: "September 2022 - August 2025",
       description: [
-        "Lead strategy and execution for an enterprise AdTech SaaS platform, empowering a Tribe of three teams and two Senior PMs.",
+        "Led strategy and execution for an enterprise AdTech SaaS platform, empowering a Tribe of three teams and two Senior PMs.",
         "Reduced user pain points and increased customer satisfaction, retention and revenue, focusing sharply on UX/UI workflow improvements, architectural redesign (multi-tenancy, microservices), performance improvements, and reduction of tech debt.",
         "Contributed to the successful opening of new markets in Europe.",
         "Implemented continuous discovery practices through regular user feedback cycles in collaboration with Design and Engineering.",
