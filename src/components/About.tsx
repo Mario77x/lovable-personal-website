@@ -3,10 +3,11 @@ const About = () => {
   // Key points about Mario Savi
   const keyPoints = [
     "14+ years working with digital products, 8 directly in product management",
-    "Expert in strategic product development and team leadership",
+    "Experienced in creating exceptional user experiences across industries and domains",
     "Strong track record in optimizing product lifecycles and revenue growth",
     "Experienced in bridging technical and business stakeholders",
-    "Passionate about creating exceptional user experiences",
+    "Seasoned in driving data-driven approaches, and taking decissions even when data is limited",
+    "Consistent record of applying Agile methodologies to unlock team potential",
   ];
   return (
     <section id="about" className="py-20 relative">
